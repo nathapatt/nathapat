@@ -2,8 +2,40 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, Github, Linkedin, Terminal, Code2, Database, Cpu, Globe, Server, Laptop, Smartphone } from "lucide-react"
 import { StarBackground } from "@/components/StarBackground"
 import { RevealOnScroll } from "@/components/RevealOnScroll"
+import { useState, useEffect } from "react"
 
 export function Hero() {
+    const [text, setText] = useState("");
+    const [isDeleting, setIsDeleting] = useState(false);
+    const [loopNum, setLoopNum] = useState(0);
+    const [typingSpeed, setTypingSpeed] = useState(150);
+
+    const roles = ["Full Stack Developer", "DevOps Engineer", "UX/UI Designer"];
+
+    useEffect(() => {
+        const handleTyping = () => {
+            const i = loopNum % roles.length;
+            const fullText = roles[i];
+
+            setText(isDeleting
+                ? fullText.substring(0, text.length - 1)
+                : fullText.substring(0, text.length + 1)
+            );
+
+            setTypingSpeed(isDeleting ? 100 : 150); // Faster deleting
+
+            if (!isDeleting && text === fullText) {
+                setTimeout(() => setIsDeleting(true), 1500); // Pause at end
+            } else if (isDeleting && text === "") {
+                setIsDeleting(false);
+                setLoopNum(loopNum + 1);
+            }
+        };
+
+        const timer = setTimeout(handleTyping, typingSpeed);
+        return () => clearTimeout(timer);
+    }, [text, isDeleting, loopNum, typingSpeed, roles]);
+
     return (
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-950 text-white pt-20">
             {/* Background Decoration */}
@@ -61,19 +93,28 @@ export function Hero() {
                     </div>
 
                     {/* Right Column: Text Content */}
-                    <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-8">
+                    <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-3">
 
                         <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
-                            Fullstack Developer <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-emerald-400">
-                                & API Expert
+                            <span className="block text-xl sm:text-2xl md:text-3xl text-slate-400 font-normal mb-2">
+                                Hello! I'm
+                            </span>
+                            <span
+                                className="text-transparent bg-clip-text animate-gradient bg-[length:200%_auto]"
+                                style={{ backgroundImage: "linear-gradient(to right, rgb(78, 205, 196), rgb(216, 178, 242), rgb(78, 205, 196))" }}
+                            >
+                                Nathapat Nerangsi
                             </span>
                         </h1>
 
                         <p className="max-w-[600px] text-slate-400 md:text-xl leading-relaxed">
-                            Crafting robust, scalable web applications with modern technologies.
-                            Let's build something amazing together.
+                            Bachelor's of Computer Engineering at Chiangmai University
                         </p>
+
+                        <h2 className="text-xl md:text-2xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-slate-200 to-slate-400 min-h-[40px] flex items-center">
+                            <span>{text}</span>
+                            <span className="w-[3px] h-[24px] bg-blue-500 ml-1 animate-blink"></span>
+                        </h2>
 
                         <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
                             <Button size="lg" className="bg-white text-slate-900 hover:bg-slate-200 transition-all font-semibold rounded-full px-8">

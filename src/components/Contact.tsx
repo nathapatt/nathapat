@@ -68,7 +68,7 @@ export function Contact() {
                                 <label className="text-sm font-medium text-slate-300">Message</label>
                                 <Textarea placeholder="Tell me about your project..." className="min-h-[150px] bg-white/5 border-white/10 focus:border-blue-500 text-white placeholder:text-slate-500" />
                             </div>
-                            <Button className="w-full bg-white/5 hover:bg-white/10 text-white font-medium py-3 rounded-xl transition-all border border-white/10 cursor-pointer backdrop-blur-xl hover:-translate-y-1 shadow-[0_4px_20px_-2px_rgba(0,0,0,0.5)]">
+                            <Button className="w-full bg-white/5 hover:bg-blue-500/10 text-white font-medium py-3 rounded-xl transition-all duration-300 border border-white/10 hover:border-blue-500/30 cursor-pointer backdrop-blur-xl hover:-translate-y-2 hover:shadow-[0_0_15px_rgba(59,130,246,0.2)] active:scale-95">
                                 Send Message
                             </Button>
                         </form>

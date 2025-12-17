@@ -52,23 +52,23 @@ export function Contact() {
                     </div>
 
                     {/* Contact Form */}
-                    <div className="bg-slate-900 border border-white/5 rounded-2xl p-8 shadow-xl">
+                    <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 shadow-2xl overflow-hidden">
                         <form className="space-y-6">
                             <div className="grid sm:grid-cols-2 gap-4">
                                 <div className="space-y-2">
                                     <label className="text-sm font-medium text-slate-300">Name</label>
-                                    <Input placeholder="John Doe" className="bg-slate-950 border-white/10 focus:border-blue-500" />
+                                    <Input placeholder="John Doe" className="bg-white/5 border-white/10 focus:border-blue-500 text-white placeholder:text-slate-500" />
                                 </div>
                                 <div className="space-y-2">
                                     <label className="text-sm font-medium text-slate-300">Email</label>
-                                    <Input type="email" placeholder="john@example.com" className="bg-slate-950 border-white/10 focus:border-blue-500" />
+                                    <Input type="email" placeholder="john@example.com" className="bg-white/5 border-white/10 focus:border-blue-500 text-white placeholder:text-slate-500" />
                                 </div>
                             </div>
                             <div className="space-y-2">
                                 <label className="text-sm font-medium text-slate-300">Message</label>
-                                <Textarea placeholder="Tell me about your project..." className="min-h-[150px] bg-slate-950 border-white/10 focus:border-blue-500" />
+                                <Textarea placeholder="Tell me about your project..." className="min-h-[150px] bg-white/5 border-white/10 focus:border-blue-500 text-white placeholder:text-slate-500" />
                             </div>
-                            <Button className="w-full bg-gradient-to-r from-blue-500 to-emerald-500 hover:from-blue-600 hover:to-emerald-600 text-white font-semibold">
+                            <Button className="w-full bg-white/5 hover:bg-white/10 text-white font-medium py-3 rounded-xl transition-all border border-white/10 cursor-pointer backdrop-blur-xl hover:-translate-y-1 shadow-[0_4px_20px_-2px_rgba(0,0,0,0.5)]">
                                 Send Message
                             </Button>
                         </form>

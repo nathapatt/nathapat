@@ -117,18 +117,31 @@ export function Hero() {
                         </h2>
 
                         <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-                            <Button size="lg" className="bg-white text-slate-900 hover:bg-slate-200 transition-all font-semibold rounded-full px-8">
+                            <Button
+                                size="lg"
+                                className="bg-white text-slate-900 hover:bg-slate-200 transition-all font-semibold rounded-full px-8"
+                                onClick={() => document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" })}
+                            >
                                 View Projects
                             </Button>
-                            <Button size="lg" variant="outline" className="border-slate-700 text-slate-300 hover:bg-slate-800 hover:text-white rounded-full px-8 backdrop-blur-sm">
+                            <Button
+                                size="lg"
+                                variant="outline"
+                                className="border-slate-700 text-slate-300 hover:bg-slate-800 hover:text-white rounded-full px-8 backdrop-blur-sm"
+                                onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}
+                            >
                                 Contact Me <ArrowRight className="ml-2 h-4 w-4" />
                             </Button>
                         </div>
 
                         {/* Socials */}
                         <div className="pt-4 flex items-center gap-6 text-slate-500">
-                            <Github className="w-6 h-6 hover:text-white transition-colors cursor-pointer" />
-                            <Linkedin className="w-6 h-6 hover:text-white transition-colors cursor-pointer" />
+                            <a href="https://github.com/nathapatt" target="_blank" rel="noreferrer">
+                                <Github className="w-6 h-6 hover:text-white transition-colors cursor-pointer" />
+                            </a>
+                            <a href="https://www.linkedin.com/in/nathapat/" target="_blank" rel="noreferrer">
+                                <Linkedin className="w-6 h-6 hover:text-white transition-colors cursor-pointer" />
+                            </a>
                             <Terminal className="w-6 h-6 hover:text-white transition-colors cursor-pointer" />
                         </div>
                     </div>

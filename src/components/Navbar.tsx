@@ -47,9 +47,13 @@ export function Navbar() {
 
                 {/* Action Button & Socials */}
                 <div className="flex items-center gap-4">
-                    <div className="hidden sm:flex items-center gap-3 border-r border-white/10 pr-4">
-                        <Github className="w-5 h-5 text-slate-400 hover:text-white transition-colors cursor-pointer" />
-                        <Linkedin className="w-5 h-5 text-slate-400 hover:text-white transition-colors cursor-pointer" />
+                    <div className="flex items-center gap-4">
+                        <a href="https://github.com/nathapatt" target="_blank" rel="noreferrer">
+                            <Github className="w-5 h-5 text-slate-400 hover:text-white transition-colors cursor-pointer" />
+                        </a>
+                        <a href="https://www.linkedin.com/in/nathapat/" target="_blank" rel="noreferrer">
+                            <Linkedin className="w-5 h-5 text-slate-400 hover:text-white transition-colors cursor-pointer" />
+                        </a>
                     </div>
                     <Button
                         size="sm"

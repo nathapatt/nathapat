@@ -11,7 +11,10 @@ export function About() {
 
                     {/* Image / Visual Column */}
                     <div className="relative group">
-                        <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-emerald-500 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+                        <div
+                            className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-emerald-500 to-blue-500 animate-gradient rounded-2xl blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"
+                            style={{ backgroundSize: '200% 100%' }}
+                        ></div>
                         <div className="relative aspect-square rounded-2xl bg-slate-900 border border-white/10 overflow-hidden">
                             {/* Placeholder for Profile Image */}
                             <img

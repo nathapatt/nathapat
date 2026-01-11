@@ -41,7 +41,7 @@ import { VscAzure } from "react-icons/vsc"
 const skillCategories = [
     {
         title: "Programming Languages",
-        icon: <Code2 className="w-6 h-6 text-blue-400" />,
+        icon: <Code2 className="w-6 h-6 text-white" />,
         description: "Core languages for building robust and scalable applications.",
         skills: [
             { name: "Java", icon: <FaJava className="text-red-500" /> },
@@ -54,7 +54,7 @@ const skillCategories = [
     },
     {
         title: "Frameworks & Tools",
-        icon: <Layout className="w-6 h-6 text-purple-400" />,
+        icon: <Layout className="w-6 h-6 text-white" />,
         description: "Modern frameworks and tools for efficient development.",
         skills: [
             { name: "Spring Boot", icon: <SiSpringboot className="text-green-500" /> },
@@ -67,7 +67,7 @@ const skillCategories = [
     },
     {
         title: "Cloud & DevOps",
-        icon: <Cloud className="w-6 h-6 text-sky-400" />,
+        icon: <Cloud className="w-6 h-6 text-white" />,
         description: "Infrastructure, deployment, and cloud services.",
         skills: [
             { name: "Huawei Cloud", icon: <SiHuawei className="text-red-600" /> },
@@ -79,7 +79,7 @@ const skillCategories = [
     },
     {
         title: "Database",
-        icon: <Database className="w-6 h-6 text-green-400" />,
+        icon: <Database className="w-6 h-6 text-white" />,
         description: "Data storage and management solutions.",
         skills: [
             { name: "MongoDB", icon: <SiMongodb className="text-green-500" /> },
@@ -91,7 +91,7 @@ const skillCategories = [
     },
     {
         title: "Cybersecurity & Networking",
-        icon: <ShieldCheck className="w-6 h-6 text-red-500" />,
+        icon: <ShieldCheck className="w-6 h-6 text-white" />,
         description: "Ensuring security and network integrity.",
         skills: [
             { name: "Penetration Testing", icon: <Lock className="text-red-400" /> },
@@ -102,7 +102,7 @@ const skillCategories = [
     },
     {
         title: "Languages",
-        icon: <Globe className="w-6 h-6 text-indigo-400" />,
+        icon: <Globe className="w-6 h-6 text-white" />,
         description: "Communication and spoken languages.",
         skills: [
             { name: "Thai", icon: <span className="font-bold text-xs">TH</span> },

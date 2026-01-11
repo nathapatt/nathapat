@@ -11,7 +11,10 @@ import {
     FileText
 } from "lucide-react"
 import {
-
+    SiExpress,
+    SiTailwindcss,
+    SiAntdesign,
+    SiShadcnui,
     SiTypescript,
     SiPython,
     SiJavascript,
@@ -63,6 +66,10 @@ const skillCategories = [
             { name: "Next.js", icon: <SiNextdotjs className="text-white" /> },
             { name: "NestJS", icon: <SiNestjs className="text-red-600" /> },
             { name: "Node.js", icon: <SiNodedotjs className="text-green-500" /> },
+            { name: "Express", icon: <SiExpress className="text-gray-400" /> },
+            { name: "Tailwind CSS", icon: <SiTailwindcss className="text-cyan-400" /> },
+            { name: "Ant Design", icon: <SiAntdesign className="text-blue-500" /> },
+            { name: "Shadcn UI", icon: <SiShadcnui className="text-white" /> }
         ]
     },
     {

@@ -47,7 +47,13 @@ export function Experience() {
                         }
                     }
                 });
-                setActiveIndexes(activeIds);
+
+                setActiveIndexes((prev) => {
+                    if (prev.length === activeIds.length && prev.every((id, i) => id === activeIds[i])) {
+                        return prev;
+                    }
+                    return activeIds;
+                });
             }
         };
 
@@ -104,7 +110,7 @@ export function Experience() {
                     <div className="absolute left-0 md:left-8 top-0 h-full w-[2px] bg-slate-800">
                         {/* Animated Scroll Progress Line */}
                         <div
-                            className="bg-blue-500 w-full transition-all duration-100 ease-out origin-top"
+                            className="bg-blue-500 w-full origin-top"
                             style={{ height: `${scrollHeight}%` }}
                         ></div>
                     </div>

@@ -1,8 +1,9 @@
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Github, Linkedin, Terminal, Code2, Database, Cpu, Globe, Server, Laptop, Smartphone } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import { StarBackground } from "@/components/StarBackground"
 import { RevealOnScroll } from "@/components/RevealOnScroll"
 import { useState, useEffect } from "react"
+import mySelf from "@/assets/myself.jpg"
 
 export function Hero() {
     const [text, setText] = useState("");
@@ -10,7 +11,7 @@ export function Hero() {
     const [loopNum, setLoopNum] = useState(0);
     const [typingSpeed, setTypingSpeed] = useState(150);
 
-    const roles = ["Full Stack Developer", "DevOps Engineer", "UX/UI Designer"];
+    const roles = ["Full Stack Developer", "UX/UI Designer"];
 
     useEffect(() => {
         const handleTyping = () => {
@@ -44,107 +45,58 @@ export function Hero() {
             {/* Stars Background (Canvas) */}
             <StarBackground />
 
-            {/* Cloud Shape at Top (SVG) */}
-            {/* <div className="absolute top-0 left-0 w-full overflow-hidden leading-none z-10 opacity-30">
-                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-[calc(140%+1.3px)] h-[150px]">
-                    <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" className="fill-blue-900"></path>
-                </svg>
-            </div> */}
+
 
 
             <RevealOnScroll>
-                <div className="container relative z-10 px-4 md:px-6 grid lg:grid-cols-2 gap-12 items-center">
+                <div className="container relative z-10 px-4 flex flex-col items-center justify-center text-center space-y-8">
 
-                    {/* Left Column: Floating Icons / Tech Galaxy */}
-                    <div className="relative h-[400px] w-full hidden lg:flex items-center justify-center">
-                        {/* Central Glow */}
-                        <div className="absolute w-64 h-64 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
-
-                        {/* Orbiting Icons */}
-                        <div className="relative w-full h-full">
-                            {/* Center Icon */}
-                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-slate-900/80 backdrop-blur-md border border-blue-500/30 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/20 z-20">
-                                <Code2 className="w-10 h-10 text-blue-400" />
-                            </div>
-
-                            {/* Surrounding Icons */}
-                            {[
-                                { Icon: Terminal, color: "text-emerald-400", delay: "0s", top: "10%", left: "20%" },
-                                { Icon: Database, color: "text-purple-400", delay: "1s", top: "20%", left: "80%" },
-                                { Icon: Globe, color: "text-cyan-400", delay: "2s", top: "80%", left: "30%" },
-                                { Icon: Server, color: "text-orange-400", delay: "3s", top: "70%", left: "70%" },
-                                { Icon: Cpu, color: "text-red-400", delay: "4s", top: "40%", left: "10%" },
-                                { Icon: Laptop, color: "text-indigo-400", delay: "1.5s", top: "15%", left: "60%" },
-                                { Icon: Smartphone, color: "text-pink-400", delay: "3.5s", top: "60%", left: "90%" },
-                            ].map((item, index) => (
-                                <div
-                                    key={index}
-                                    className="absolute p-3 bg-slate-800/50 backdrop-blur-sm border border-white/10 rounded-xl shadow-lg animate-float"
-                                    style={{
-                                        top: item.top,
-                                        left: item.left,
-                                        animationDelay: item.delay
-                                    }}
-                                >
-                                    <item.Icon className={`w-6 h-6 ${item.color}`} />
-                                </div>
-                            ))}
+                    {/* Profile Picture (Centered & Minimal) */}
+                    <div className="relative group w-32 h-32 md:w-40 md:h-40 mb-4">
+                        <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-emerald-500 to-blue-500 animate-gradient rounded-full blur opacity-25 group-hover:opacity-75 transition duration-500"></div>
+                        <div className="relative aspect-square rounded-full bg-slate-900 border-2 border-slate-800 overflow-hidden">
+                            <img
+                                src={mySelf}
+                                alt="Profile"
+                                className="w-full h-full object-cover"
+                            />
                         </div>
                     </div>
 
-                    {/* Right Column: Text Content */}
-                    <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-3">
-
-                        <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
-                            <span className="block text-xl sm:text-2xl md:text-3xl text-slate-400 font-normal mb-2">
-                                Hello! I'm
-                            </span>
-                            <span
-                                className="text-transparent bg-clip-text animate-gradient bg-[length:200%_auto]"
-                                style={{ backgroundImage: "linear-gradient(to right, rgb(78, 205, 196), rgb(216, 178, 242), rgb(78, 205, 196))" }}
-                            >
-                                Nathapat Nerangsi
-                            </span>
-                        </h1>
-
-                        <p className="max-w-[600px] text-slate-400 md:text-xl leading-relaxed">
-                            Bachelor's of Computer Engineering at Chiangmai University
-                        </p>
-
-                        <h2 className="text-xl md:text-2xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-slate-200 to-slate-400 min-h-[40px] flex items-center">
-                            <span>{text}</span>
-                            <span className="w-[3px] h-[24px] bg-blue-500 ml-1 animate-blink"></span>
+                    {/* Main Typography */}
+                    <div className="space-y-4">
+                        <h2 className="text-xl md:text-2xl font-light text-slate-400 tracking-wide uppercase">
+                            Hello, I'm
                         </h2>
-
-                        <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-                            <Button
-                                size="lg"
-                                className="bg-white text-slate-900 hover:bg-slate-200 transition-all font-semibold rounded-full px-8"
-                                onClick={() => document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" })}
-                            >
-                                View Projects
-                            </Button>
-                            <Button
-                                size="lg"
-                                variant="outline"
-                                className="border-slate-700 text-slate-300 hover:bg-slate-800 hover:text-white rounded-full px-8 backdrop-blur-sm"
-                                onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}
-                            >
-                                Contact Me <ArrowRight className="ml-2 h-4 w-4" />
-                            </Button>
-                        </div>
-
-                        {/* Socials */}
-                        <div className="pt-4 flex items-center gap-6 text-slate-500">
-                            <a href="https://github.com/nathapatt" target="_blank" rel="noreferrer">
-                                <Github className="w-6 h-6 hover:text-white transition-colors cursor-pointer" />
-                            </a>
-                            <a href="https://www.linkedin.com/in/nathapat/" target="_blank" rel="noreferrer">
-                                <Linkedin className="w-6 h-6 hover:text-white transition-colors cursor-pointer" />
-                            </a>
-                            <Terminal className="w-6 h-6 hover:text-white transition-colors cursor-pointer" />
+                        <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter text-white uppercase flex flex-col sm:block">
+                            <span className="block sm:inline">Nathapat</span>
+                            <span className="block sm:inline sm:ml-4">Nerangsi</span>
+                        </h1>
+                        <div className="flex flex-col items-center justify-center gap-2 text-lg md:text-2xl font-light text-slate-300">
+                            <span className="text-center">Bachelor's of Computer Engineering at</span>
+                            <span className="font-serif italic text-blue-400">Chiang Mai University</span>
                         </div>
                     </div>
+
+                    {/* Dynamic Role Text */}
+                    <div className="h-8 flex items-center justify-center">
+                        <span className="text-slate-500 text-lg font-mono">{text}</span>
+                        <span className="w-[2px] h-5 bg-blue-500 ml-2 animate-blink"></span>
+                    </div>
+
+
+
+                    {/* Minimal CTA */}
+                    <div className="pt-8">
+                        <Button
+                            variant="link"
+                            className="text-slate-400 hover:text-white transition-colors text-lg"
+                            onClick={() => document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" })}
+                        >
+                            View Selected Work <ArrowRight className="ml-2 w-4 h-4" />
+                        </Button>
+                    </div>
+
                 </div>
             </RevealOnScroll>
 

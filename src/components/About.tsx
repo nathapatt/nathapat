@@ -1,4 +1,4 @@
-import mySelf from "@/assets/myself.jpg"
+
 
 export function About() {
     return (
@@ -7,23 +7,9 @@ export function About() {
             <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
 
             <div className="container relative z-10 px-4 md:px-6">
-                <div className="grid gap-12 lg:grid-cols-2 items-center">
+                <div className="max-w-3xl mx-auto">
 
-                    {/* Image / Visual Column */}
-                    <div className="relative group">
-                        <div
-                            className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-emerald-500 to-blue-500 animate-gradient rounded-2xl blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"
-                            style={{ backgroundSize: '200% 100%' }}
-                        ></div>
-                        <div className="relative aspect-square rounded-2xl bg-slate-900 border border-white/10 overflow-hidden">
-                            {/* Placeholder for Profile Image */}
-                            <img
-                                src={mySelf}
-                                alt="Profile"
-                                className="w-full h-full object-cover"
-                            />
-                        </div>
-                    </div>
+
 
                     {/* Content Column */}
                     <div className="space-y-6">
@@ -32,13 +18,13 @@ export function About() {
                         </h2>
                         <div className="space-y-4 text-slate-400 text-lg leading-relaxed">
                             <p>
-                                I am a Good boy Fullstack Developer with a keen eye for design and a drive for creating seamless digital experiences.
+                                I am a new grad student in the <span className="text-slate-200 font-medium">Computer Engineering Department</span> at <span className="text-slate-200 font-medium">ChiangMai University</span>, ChiangMai, Thailand.
                             </p>
                             <p>
-                                With expertise in modern web technologies like React, Node.js, and TypeScript, I build scalable applications that solve real-world problems. My approach combines technical excellence with user-centric design principles.
+                                I am passionate about learning and exploring new technologies.
                             </p>
                             <p>
-                                When I'm not coding, you can find me exploring new technologies, contributing to open source, or enjoying a good cup of coffee while sketching out new ideas.
+                                Bridging the gap between <span className="text-slate-200 font-medium">robust software development</span> and <span className="text-slate-200 font-medium">cybersecurity</span> to deliver secure, intelligent, and scalable applications.
                             </p>
                         </div>
 

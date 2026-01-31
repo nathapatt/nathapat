@@ -44,73 +44,79 @@ import { VscAzure } from "react-icons/vsc"
 const skillCategories = [
     {
         title: "Programming Languages",
-        icon: <Code2 className="w-6 h-6 text-white" />,
+        icon: <Code2 className="w-6 h-6" />,
         description: "Core languages for building robust and scalable applications.",
+        span: "md:col-span-2",
         skills: [
-            { name: "Java", icon: <FaJava className="text-red-500" /> },
-            { name: "TypeScript", icon: <SiTypescript className="text-blue-600" /> },
-            { name: "Python", icon: <SiPython className="text-yellow-500" /> },
-            { name: "JavaScript", icon: <SiJavascript className="text-yellow-400" /> },
-            { name: "HTML", icon: <SiHtml5 className="text-orange-500" /> },
-            { name: "CSS", icon: <SiCss3 className="text-blue-500" /> }
-        ]
-    },
-    {
-        title: "Frameworks & Tools",
-        icon: <Layout className="w-6 h-6 text-white" />,
-        description: "Modern frameworks and tools for efficient development.",
-        skills: [
-            { name: "Spring Boot", icon: <SiSpringboot className="text-green-500" /> },
-            { name: "FastAPI", icon: <SiFastapi className="text-teal-500" /> },
-            { name: "React", icon: <SiReact className="text-blue-400" /> },
-            { name: "Next.js", icon: <SiNextdotjs className="text-white" /> },
-            { name: "NestJS", icon: <SiNestjs className="text-red-600" /> },
-            { name: "Node.js", icon: <SiNodedotjs className="text-green-500" /> },
-            { name: "Express", icon: <SiExpress className="text-gray-400" /> },
-            { name: "Tailwind CSS", icon: <SiTailwindcss className="text-cyan-400" /> },
-            { name: "Ant Design", icon: <SiAntdesign className="text-blue-500" /> },
-            { name: "Shadcn UI", icon: <SiShadcnui className="text-white" /> }
+            { name: "Java", icon: <FaJava className="text-white/80" /> },
+            { name: "TypeScript", icon: <SiTypescript className="text-white/80" /> },
+            { name: "Python", icon: <SiPython className="text-white/80" /> },
+            { name: "JavaScript", icon: <SiJavascript className="text-white/80" /> },
+            { name: "HTML", icon: <SiHtml5 className="text-white/80" /> },
+            { name: "CSS", icon: <SiCss3 className="text-white/80" /> }
         ]
     },
     {
         title: "Cloud & DevOps",
-        icon: <Cloud className="w-6 h-6 text-white" />,
+        icon: <Cloud className="w-6 h-6" />,
         description: "Infrastructure, deployment, and cloud services.",
+        span: "md:col-span-1",
         skills: [
-            { name: "Huawei Cloud", icon: <SiHuawei className="text-red-600" /> },
-            { name: "Google Cloud", icon: <SiGooglecloud className="text-blue-500" /> },
-            { name: "Azure", icon: <VscAzure className="text-blue-400" /> },
-            { name: "Docker", icon: <SiDocker className="text-blue-500" /> },
-            { name: "Kubernetes", icon: <SiKubernetes className="text-blue-600" /> }
+            { name: "Huawei Cloud", icon: <SiHuawei className="text-white/80" /> },
+            { name: "Google Cloud", icon: <SiGooglecloud className="text-white/80" /> },
+            { name: "Azure", icon: <VscAzure className="text-white/80" /> },
+            { name: "Docker", icon: <SiDocker className="text-white/80" /> },
+            { name: "Kubernetes", icon: <SiKubernetes className="text-white/80" /> }
         ]
     },
     {
         title: "Database",
-        icon: <Database className="w-6 h-6 text-white" />,
+        icon: <Database className="w-6 h-6" />,
         description: "Data storage and management solutions.",
+        span: "md:col-span-1",
         skills: [
-            { name: "MongoDB", icon: <SiMongodb className="text-green-500" /> },
-            { name: "PostgreSQL", icon: <SiPostgresql className="text-blue-300" /> },
-            { name: "Elastic Search", icon: <SiElasticsearch className="text-yellow-400" /> },
-            { name: "MySQL", icon: <SiMysql className="text-blue-400" /> },
-            { name: "Redis", icon: <SiRedis className="text-red-500" /> }
+            { name: "MongoDB", icon: <SiMongodb className="text-white/80" /> },
+            { name: "PostgreSQL", icon: <SiPostgresql className="text-white/80" /> },
+            { name: "Elastic Search", icon: <SiElasticsearch className="text-white/80" /> },
+            { name: "MySQL", icon: <SiMysql className="text-white/80" /> },
+            { name: "Redis", icon: <SiRedis className="text-white/80" /> }
+        ]
+    },
+    {
+        title: "Frameworks & Tools",
+        icon: <Layout className="w-6 h-6" />,
+        description: "Modern frameworks and tools for efficient development.",
+        span: "md:col-span-2",
+        skills: [
+            { name: "Spring Boot", icon: <SiSpringboot className="text-white/80" /> },
+            { name: "FastAPI", icon: <SiFastapi className="text-white/80" /> },
+            { name: "React", icon: <SiReact className="text-white/80" /> },
+            { name: "Next.js", icon: <SiNextdotjs className="text-white/80" /> },
+            { name: "NestJS", icon: <SiNestjs className="text-white/80" /> },
+            { name: "Node.js", icon: <SiNodedotjs className="text-white/80" /> },
+            { name: "Express", icon: <SiExpress className="text-white/80" /> },
+            { name: "Tailwind CSS", icon: <SiTailwindcss className="text-white/80" /> },
+            { name: "Ant Design", icon: <SiAntdesign className="text-white/80" /> },
+            { name: "Shadcn UI", icon: <SiShadcnui className="text-white/80" /> }
         ]
     },
     {
         title: "Cybersecurity & Networking",
-        icon: <ShieldCheck className="w-6 h-6 text-white" />,
+        icon: <ShieldCheck className="w-6 h-6" />,
         description: "Ensuring security and network integrity.",
+        span: "md:col-span-2",
         skills: [
-            { name: "Penetration Testing", icon: <Lock className="text-red-400" /> },
-            { name: "Risk Assessments", icon: <FileText className="text-yellow-400" /> },
-            { name: "Digital Forensics", icon: <Search className="text-blue-400" /> },
-            { name: "Network Configuration", icon: <Network className="text-green-400" /> }
+            { name: "Penetration Testing", icon: <Lock className="text-white/80" /> },
+            { name: "Risk Assessments", icon: <FileText className="text-white/80" /> },
+            { name: "Digital Forensics", icon: <Search className="text-white/80" /> },
+            { name: "Network Configuration", icon: <Network className="text-white/80" /> }
         ]
     },
     {
         title: "Languages",
-        icon: <Globe className="w-6 h-6 text-white" />,
+        icon: <Globe className="w-6 h-6" />,
         description: "Communication and spoken languages.",
+        span: "md:col-span-1",
         skills: [
             { name: "Thai", icon: <span className="font-bold text-xs">TH</span> },
             { name: "English", icon: <span className="font-bold text-xs">EN</span> }
@@ -120,45 +126,74 @@ const skillCategories = [
 
 export function Skills() {
     return (
-        <section id="skills" className="py-24 bg-slate-950 relative overflow-hidden">
-            <div className="container px-4 md:px-6 relative z-10 mx-auto">
-                <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 font-display">
+        <section id="skills" className="py-32 bg-slate-950 relative overflow-hidden">
+            {/* Background Gradients - Subtle Apple-like glows */}
+            <div className="absolute top-20 left-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[120px] pointer-events-none" />
+
+            <div className="container px-4 md:px-6 relative z-10 mx-auto max-w-6xl">
+                <div className="text-center mb-20">
+                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 font-display tracking-tight">
                         Skills & Technologies
                     </h2>
+                    <p className="text-slate-400 max-w-2xl mx-auto text-lg font-light">
+                        A curated stack of technologies I use to build digital products.
+                    </p>
                 </div>
 
-                <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {skillCategories.map((category, index) => (
                         <div
                             key={index}
-                            className="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 hover:border-blue-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10 group"
+                            className={`
+                                group relative overflow-hidden
+                                bg-white/[0.03] backdrop-blur-xl border border-white/10
+                                rounded-3xl p-8
+                                hover:bg-white/[0.05] transition-all duration-500 ease-out
+                                hover:scale-[1.01] hover:shadow-2xl hover:shadow-blue-500/10
+                                \${category.span}
+                            `}
                         >
-                            <div className="flex items-center gap-3 mb-4">
-                                <div className="p-3 bg-slate-800 rounded-xl group-hover:bg-blue-500/10 transition-colors">
-                                    {category.icon}
-                                </div>
-                                <h3 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">
-                                    {category.title}
-                                </h3>
-                            </div>
+                            {/* Inner Glow Effect */}
+                            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                            <p className="text-slate-400 mb-6 h-12 text-sm leading-relaxed">
-                                {category.description}
-                            </p>
-
-                            <div className="flex flex-wrap gap-2">
-                                {category.skills.map((skill, skillIndex) => (
-                                    <div
-                                        key={skillIndex}
-                                        className="flex items-center gap-2 px-3 py-1.5 bg-slate-800/50 border border-slate-700/50 rounded-full text-slate-300 text-sm hover:bg-slate-700/50 hover:text-white hover:border-blue-500/30 transition-all cursor-default"
-                                    >
-                                        <span className="text-lg">
-                                            {skill.icon}
-                                        </span>
-                                        <span>{skill.name}</span>
+                            <div className="relative z-10 h-full flex flex-col">
+                                <div className="flex items-start gap-4 mb-6">
+                                    <div className="p-3 bg-white/5 rounded-2xl border border-white/10 group-hover:scale-110 transition-transform duration-500">
+                                        {/* Clone element to force text-white if needed, though usually className cascade works */}
+                                        <div className="text-white">
+                                            {category.icon}
+                                        </div>
                                     </div>
-                                ))}
+                                    <div>
+                                        <h3 className="text-xl font-semibold text-white/90 mb-1 group-hover:text-white transition-colors">
+                                            {category.title}
+                                        </h3>
+                                        <p className="text-slate-400 text-sm font-light leading-relaxed">
+                                            {category.description}
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div className="flex flex-wrap gap-2 mt-auto">
+                                    {category.skills.map((skill, skillIndex) => (
+                                        <div
+                                            key={skillIndex}
+                                            className="
+                                                flex items-center gap-2 px-3 py-2 
+                                                bg-white/5 border border-white/5 rounded-xl 
+                                                text-slate-300 text-sm font-medium
+                                                hover:bg-white/10 hover:text-white hover:border-white/20 
+                                                transition-all duration-300 cursor-default
+                                            "
+                                        >
+                                            <span className="text-lg opacity-80 group-hover/skill:opacity-100">
+                                                {skill.icon}
+                                            </span>
+                                            <span>{skill.name}</span>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
                         </div>
                     ))}

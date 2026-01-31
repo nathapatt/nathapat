@@ -16,7 +16,9 @@ interface Project {
     mobileImage?: string;
     links: {
         demo: string;
+        demo: string;
         code: string;
+        code2?: string;
     };
     imagePosition?: string;
 }
@@ -60,7 +62,7 @@ const projects: Project[] = [
             "A multiplayer strategy game backend where players program their units using a custom scripting language.",
         gradient: "from-emerald-500 via-teal-500 to-cyan-500",
         image: upbeatImage,
-        links: { demo: "#", code: "https://github.com/NokiaTh131/upbeat" },
+        links: { demo: "#", code: "https://github.com/NokiaTh131/upbeat", code2: "https://github.com/NokiaTh131/newUPBEAT" },
     },
 ];
 
@@ -100,17 +102,30 @@ export function Projects() {
                                     </h3>
                                 </div>
 
-                                {project.links.code !== "#" && (
-                                    <a
-                                        href={project.links.code}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="flex items-center gap-2 px-4 py-2 text-xs font-bold text-white uppercase rounded-full bg-slate-800 border border-slate-700 hover:bg-slate-700 hover:border-slate-600 transition-all duration-300"
-                                    >
-                                        <Github className="w-4 h-4" />
-                                        Code
-                                    </a>
-                                )}
+                                <div className="flex gap-1.5">
+                                    {project.links.code !== "#" && (
+                                        <a
+                                            href={project.links.code}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex items-center gap-2 px-3 py-1.5 text-xs font-bold text-white uppercase rounded-full bg-slate-800 border border-slate-700 hover:bg-slate-700 hover:border-slate-600 transition-all duration-300"
+                                        >
+                                            <Github className="w-4 h-4" />
+                                            Code
+                                        </a>
+                                    )}
+                                    {project.links.code2 && (
+                                        <a
+                                            href={project.links.code2}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex items-center gap-2 px-3 py-1.5 text-xs font-bold text-white uppercase rounded-full bg-slate-800 border border-slate-700 hover:bg-slate-700 hover:border-slate-600 transition-all duration-300"
+                                        >
+                                            <Github className="w-4 h-4" />
+                                            Code 2
+                                        </a>
+                                    )}
+                                </div>
                             </div>
 
                             <a

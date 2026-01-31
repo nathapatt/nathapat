@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ExternalLink, Github } from "lucide-react";
+import { Github } from "lucide-react";
 import medImage from "../assets/Med.png";
 import orderImage from "../assets/order.png";
 import orderClientImage from "../assets/order_client.png";

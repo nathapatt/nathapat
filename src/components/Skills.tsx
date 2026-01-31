@@ -48,12 +48,12 @@ const skillCategories = [
         description: "Core languages for building robust and scalable applications.",
         span: "md:col-span-2",
         skills: [
-            { name: "Java", icon: <FaJava className="text-white/80" /> },
-            { name: "TypeScript", icon: <SiTypescript className="text-white/80" /> },
-            { name: "Python", icon: <SiPython className="text-white/80" /> },
-            { name: "JavaScript", icon: <SiJavascript className="text-white/80" /> },
-            { name: "HTML", icon: <SiHtml5 className="text-white/80" /> },
-            { name: "CSS", icon: <SiCss3 className="text-white/80" /> }
+            { name: "Java", icon: <FaJava className="text-[#ed8b00]" /> },
+            { name: "TypeScript", icon: <SiTypescript className="text-[#3178C6]" /> },
+            { name: "Python", icon: <SiPython className="text-[#3776AB]" /> },
+            { name: "JavaScript", icon: <SiJavascript className="text-[#F7DF1E]" /> },
+            { name: "HTML", icon: <SiHtml5 className="text-[#E34C26]" /> },
+            { name: "CSS", icon: <SiCss3 className="text-[#1572B6]" /> }
         ]
     },
     {
@@ -62,11 +62,11 @@ const skillCategories = [
         description: "Infrastructure, deployment, and cloud services.",
         span: "md:col-span-1",
         skills: [
-            { name: "Huawei Cloud", icon: <SiHuawei className="text-white/80" /> },
-            { name: "Google Cloud", icon: <SiGooglecloud className="text-white/80" /> },
-            { name: "Azure", icon: <VscAzure className="text-white/80" /> },
-            { name: "Docker", icon: <SiDocker className="text-white/80" /> },
-            { name: "Kubernetes", icon: <SiKubernetes className="text-white/80" /> }
+            { name: "Huawei Cloud", icon: <SiHuawei className="text-[#C7000B]" /> },
+            { name: "Google Cloud", icon: <SiGooglecloud className="text-[#4285F4]" /> },
+            { name: "Azure", icon: <VscAzure className="text-[#0078D4]" /> },
+            { name: "Docker", icon: <SiDocker className="text-[#2496ED]" /> },
+            { name: "Kubernetes", icon: <SiKubernetes className="text-[#326CE5]" /> }
         ]
     },
     {
@@ -75,11 +75,11 @@ const skillCategories = [
         description: "Data storage and management solutions.",
         span: "md:col-span-1",
         skills: [
-            { name: "MongoDB", icon: <SiMongodb className="text-white/80" /> },
-            { name: "PostgreSQL", icon: <SiPostgresql className="text-white/80" /> },
-            { name: "Elastic Search", icon: <SiElasticsearch className="text-white/80" /> },
-            { name: "MySQL", icon: <SiMysql className="text-white/80" /> },
-            { name: "Redis", icon: <SiRedis className="text-white/80" /> }
+            { name: "MongoDB", icon: <SiMongodb className="text-[#47A248]" /> },
+            { name: "PostgreSQL", icon: <SiPostgresql className="text-[#4169E1]" /> },
+            { name: "Elastic Search", icon: <SiElasticsearch className="text-[#FEC514]" /> },
+            { name: "MySQL", icon: <SiMysql className="text-[#4479A1]" /> },
+            { name: "Redis", icon: <SiRedis className="text-[#DC382D]" /> }
         ]
     },
     {
@@ -88,16 +88,16 @@ const skillCategories = [
         description: "Modern frameworks and tools for efficient development.",
         span: "md:col-span-2",
         skills: [
-            { name: "Spring Boot", icon: <SiSpringboot className="text-white/80" /> },
-            { name: "FastAPI", icon: <SiFastapi className="text-white/80" /> },
-            { name: "React", icon: <SiReact className="text-white/80" /> },
-            { name: "Next.js", icon: <SiNextdotjs className="text-white/80" /> },
-            { name: "NestJS", icon: <SiNestjs className="text-white/80" /> },
-            { name: "Node.js", icon: <SiNodedotjs className="text-white/80" /> },
-            { name: "Express", icon: <SiExpress className="text-white/80" /> },
-            { name: "Tailwind CSS", icon: <SiTailwindcss className="text-white/80" /> },
-            { name: "Ant Design", icon: <SiAntdesign className="text-white/80" /> },
-            { name: "Shadcn UI", icon: <SiShadcnui className="text-white/80" /> }
+            { name: "Spring Boot", icon: <SiSpringboot className="text-[#6DB33F]" /> },
+            { name: "FastAPI", icon: <SiFastapi className="text-[#009688]" /> },
+            { name: "React", icon: <SiReact className="text-[#61DAFB]" /> },
+            { name: "Next.js", icon: <SiNextdotjs className="text-white" /> },
+            { name: "NestJS", icon: <SiNestjs className="text-[#E0234E]" /> },
+            { name: "Node.js", icon: <SiNodedotjs className="text-[#339933]" /> },
+            { name: "Express", icon: <SiExpress className="text-white" /> },
+            { name: "Tailwind CSS", icon: <SiTailwindcss className="text-[#06B6D4]" /> },
+            { name: "Ant Design", icon: <SiAntdesign className="text-[#1890FF]" /> },
+            { name: "Shadcn UI", icon: <SiShadcnui className="text-white" /> }
         ]
     },
     {

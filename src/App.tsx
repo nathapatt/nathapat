@@ -16,13 +16,13 @@ function App() {
         <About />
       </RevealOnScroll>
       <RevealOnScroll>
-        <Experience />
+        <Projects />
       </RevealOnScroll>
       <RevealOnScroll>
         <Skills />
       </RevealOnScroll>
       <RevealOnScroll>
-        <Projects />
+        <Experience />
       </RevealOnScroll>
       <RevealOnScroll>
         <Contact />

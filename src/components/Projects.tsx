@@ -16,7 +16,6 @@ interface Project {
     mobileImage?: string;
     links: {
         demo: string;
-        demo: string;
         code: string;
         code2?: string;
     };

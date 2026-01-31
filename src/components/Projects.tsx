@@ -3,6 +3,8 @@ import { Github } from "lucide-react";
 import medImage from "../assets/med.png";
 import orderImage from "../assets/order.png";
 import orderClientImage from "../assets/order_client.png";
+import ticketImage from "../assets/ticket.png";
+import upbeatImage from "../assets/upbeat.png";
 
 interface Project {
     id: string;
@@ -22,13 +24,12 @@ interface Project {
 const projects: Project[] = [
     {
         id: "01",
-        category: "Frontend Developer",
-        title: "Medical Examination System",
-        description:
-            "A comprehensive system for managing clinical examinations, patient records, and digital prescriptions.",
-        gradient: "from-orange-500 via-amber-500 to-yellow-500",
-        image: medImage,
-        links: { demo: "#", code: "https://github.com/nathapatt/frontMex" },
+        category: "Full Stack Developer / DevOps",
+        title: "Ticket Management App",
+        description: "A RAG-powered ticket management system developed with ITSC Chiang Mai University as the stakeholder, featuring LLM-assisted analysis, dashboards, PDF export, and automated processing.",
+        gradient: "from-pink-500 via-rose-500 to-red-500",
+        image: ticketImage,
+        links: { demo: "#", code: "#" },
     },
     {
         id: "02",
@@ -43,21 +44,23 @@ const projects: Project[] = [
     },
     {
         id: "03",
-        category: "AI Solution",
-        title: "Content AI Generator",
+        category: "Frontend Developer",
+        title: "Medical Examination System",
         description:
-            "Advanced content creation platform leveraging OpenAI to automatically generate blog posts, social media captions, and marketing copy.",
-        gradient: "from-emerald-500 via-teal-500 to-cyan-500",
-        links: { demo: "#", code: "#" },
+            "A comprehensive system for managing clinical examinations, patient records, and digital prescriptions.",
+        gradient: "from-orange-500 via-amber-500 to-yellow-500",
+        image: medImage,
+        links: { demo: "#", code: "https://github.com/nathapatt/frontMex" },
     },
     {
         id: "04",
-        category: "Mobile App",
-        title: "Health & Wellness",
+        category: "Frontend Developer",
+        title: "UPBEAT Game",
         description:
-            "Cross-platform mobile application for tracking fitness metrics, diet planning, and personalized workout routines.",
-        gradient: "from-pink-500 via-rose-500 to-red-500",
-        links: { demo: "#", code: "#" },
+            "A multiplayer strategy game backend where players program their units using a custom scripting language.",
+        gradient: "from-emerald-500 via-teal-500 to-cyan-500",
+        image: upbeatImage,
+        links: { demo: "#", code: "https://github.com/NokiaTh131/upbeat" },
     },
 ];
 
@@ -97,15 +100,17 @@ export function Projects() {
                                     </h3>
                                 </div>
 
-                                <a
-                                    href={project.links.code}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center gap-2 px-4 py-2 text-xs font-bold text-white uppercase rounded-full bg-slate-800 border border-slate-700 hover:bg-slate-700 hover:border-slate-600 transition-all duration-300"
-                                >
-                                    <Github className="w-4 h-4" />
-                                    Code
-                                </a>
+                                {project.links.code !== "#" && (
+                                    <a
+                                        href={project.links.code}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex items-center gap-2 px-4 py-2 text-xs font-bold text-white uppercase rounded-full bg-slate-800 border border-slate-700 hover:bg-slate-700 hover:border-slate-600 transition-all duration-300"
+                                    >
+                                        <Github className="w-4 h-4" />
+                                        Code
+                                    </a>
+                                )}
                             </div>
 
                             <a

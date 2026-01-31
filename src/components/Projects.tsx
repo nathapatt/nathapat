@@ -122,7 +122,7 @@ export function Projects() {
                                             className="flex items-center gap-2 px-3 py-1.5 text-xs font-bold text-white uppercase rounded-full bg-slate-800 border border-slate-700 hover:bg-slate-700 hover:border-slate-600 transition-all duration-300"
                                         >
                                             <Github className="w-4 h-4" />
-                                            Code 2
+                                            Code
                                         </a>
                                     )}
                                 </div>

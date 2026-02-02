@@ -39,10 +39,15 @@ export const RevealOnScroll = ({ children, className }: RevealOnScrollProps) => 
         <div
             ref={ref}
             className={cn(
-                "transition-all duration-1000 transform",
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20",
+                "transition-all duration-1000",
+                isVisible
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-20",
                 className
             )}
+            style={{
+                willChange: isVisible ? 'auto' : 'opacity, transform'
+            }}
         >
             {children}
         </div>

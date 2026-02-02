@@ -92,7 +92,7 @@ export function Experience() {
         },
         {
             company: "Chiang Mai University",
-            role: "Computer Engineering Student",
+            role: "Computer Engineering (Cybersec Track)",
             period: "2021 - Present",
             date: "June 2022- March 2026",
             location: "Chiang Mai, Thailand",

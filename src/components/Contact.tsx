@@ -2,7 +2,7 @@ import { Github, Linkedin, Mail } from "lucide-react"
 
 export function Contact() {
     return (
-        <section id="contact" className="py-20 bg-slate-950 border-t border-white/5 relative overflow-hidden">
+        <section id="contact" className="pt-20 pb-0 bg-slate-950 border-t border-white/5 relative overflow-hidden">
             {/* Background Gradients */}
             <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[100px] pointer-events-none"></div>
             <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[100px] pointer-events-none"></div>
@@ -73,10 +73,11 @@ export function Contact() {
                         </div>
                     </div>
 
-                    {/* Footer */}
-                    <div className="mt-24 pt-8 border-t border-white/5 text-slate-500 text-sm text-center">
-                        <p>&copy; {new Date().getFullYear()} Nathapat. Built with React & Tailwind.</p>
-                    </div>
+                </div>
+
+                {/* Footer */}
+                <div className="mt-8 pt-8 pb-8 border-t border-white/5 text-slate-500 text-sm text-center">
+                    <p>&copy; {new Date().getFullYear()} Nathapat. Built with Love.</p>
                 </div>
             </div>
         </section>

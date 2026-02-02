@@ -172,7 +172,7 @@ export function Experience() {
                                                     <h3 className="text-xl font-bold text-white mb-1 group-hover:text-blue-400 transition-colors">
                                                         {exp.role}
                                                     </h3>
-                                                    <div className="text-slate-400 font-medium mb-1">{exp.company}</div>
+                                                    <div className="text-slate-300 font-medium mb-1">{exp.company}</div>
 
                                                     <div className="flex flex-wrap items-center gap-3 text-sm text-slate-500 mt-2">
                                                         <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/5">
@@ -188,7 +188,7 @@ export function Experience() {
                                                 </div>
                                             </div>
 
-                                            <div className="flex items-center gap-2 text-slate-400 text-sm font-medium bg-white/5 px-4 py-1.5 rounded-full border border-white/5 self-start shrink-0">
+                                            <div className="flex items-center gap-2 text-slate-300 text-sm font-medium bg-white/5 px-4 py-1.5 rounded-full border border-white/5 self-start shrink-0">
                                                 <Calendar className="w-4 h-4" />
                                                 {exp.date || exp.period}
                                             </div>
@@ -201,7 +201,7 @@ export function Experience() {
                                                 {exp.items.map((item, i) => (
                                                     <li key={i} className="flex items-start gap-3 group/item">
                                                         <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-500 box-shadow-blue group-hover/item:scale-150 transition-all duration-300" />
-                                                        <span className="text-slate-400 leading-relaxed group-hover/item:text-slate-300 transition-colors">
+                                                        <span className="text-slate-300 text-base leading-relaxed group-hover/item:text-white transition-colors">
                                                             {item}
                                                         </span>
                                                     </li>

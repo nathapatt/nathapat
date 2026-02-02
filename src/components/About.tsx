@@ -67,7 +67,7 @@ export function About() {
                                 <div className="space-y-4">
                                     <div>
                                         <h4 className="text-lg font-medium text-white mb-2">Top 50 : AIS JUMP Thailand Hackathon 2025</h4>
-                                        <p className="text-slate-400 text-sm font-light leading-relaxed">
+                                        <p className="text-slate-300 text-base leading-relaxed">
                                             Designed the solution architecture for <span className="text-slate-200 font-normal">'Pun Plook'</span>, an IoT-enabled smart pot aimed at improving accessibility for elderly users within the AIS ecosystem.
                                         </p>
                                     </div>
@@ -95,9 +95,9 @@ export function About() {
                                         "Cisco Networking Academy - NDG Linux Unhatched",
                                         "Cisco Networking Academy – Introduction to Cybersecurity"
                                     ].map((cert, index) => (
-                                        <li key={index} className="flex items-start gap-3 text-slate-400 font-light text-sm">
+                                        <li key={index} className="flex items-start gap-3 text-slate-300 text-base">
                                             <div className="w-1.5 h-1.5 rounded-full bg-blue-400/80 mt-2 shrink-0 group-hover:bg-blue-400 transition-colors" />
-                                            <span className="group-hover:text-slate-300 transition-colors">{cert}</span>
+                                            <span className="group-hover:text-white transition-colors">{cert}</span>
                                         </li>
                                     ))}
                                 </ul>

@@ -17,7 +17,7 @@ export function Contact() {
                                 Get In Touch
                                 <span className="absolute left-0 -bottom-4 w-12 h-1 bg-white rounded-full"></span>
                             </h2>
-                            <p className="text-slate-400 text-lg mt-8 leading-relaxed">
+                            <p className="text-slate-300 text-lg mt-8 leading-relaxed">
                                 I’m open to new opportunities and interesting projects.
                                 Whether you have a question or just want to say hi, feel free to reach out!
                             </p>
@@ -59,7 +59,7 @@ export function Contact() {
 
                         <div className="relative z-10">
                             <h3 className="text-2xl font-bold text-white mb-4">Let's work together</h3>
-                            <p className="text-slate-400 mb-8 leading-relaxed">
+                            <p className="text-slate-300 mb-8 leading-relaxed">
                                 Open to new projects and collaborations.
                                 Let’s build impactful solutions together.
                             </p>

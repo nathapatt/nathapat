@@ -70,7 +70,6 @@ export function Experience() {
             role: "Full Stack Developer Intern",
             period: "Internship",
             date: "April 2025 - May 2025",
-            description: "Developed responsive web applications for real clients.",
             location: "Bangkok, Thailand",
             logo: witsawaLogo,
             items: [
@@ -96,7 +95,6 @@ export function Experience() {
             role: "Computer Engineering Student",
             period: "2021 - Present",
             date: "June 2022- March 2026",
-            description: "Specializing in Cybersecurity Track",
             location: "Chiang Mai, Thailand",
             gpa: "GPA 3.29",
             logo: cmuLogo,
@@ -105,26 +103,29 @@ export function Experience() {
     ];
 
     return (
-        <section id="experience" className="py-20 bg-slate-950 text-white relative overflow-hidden">
+        <section id="experience" className="py-20 bg-slate-950 relative overflow-hidden">
+            {/* Background Gradients */}
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[120px] pointer-events-none" />
 
-            <div className="container px-4 md:px-6 relative z-10">
-                <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
-                    <span className="bg-clip-text">
+            <div className="container px-4 md:px-6 relative z-10 mx-auto">
+                <div className="text-center mb-16">
+                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight">
                         Experience
-                    </span>
-                </h2>
+                    </h2>
+                </div>
 
                 <div className="relative max-w-4xl mx-auto pl-8 md:pl-0" ref={containerRef}>
                     {/* Vertical Line Container */}
-                    <div className="absolute left-0 md:left-8 top-0 h-full w-[2px] bg-slate-800">
+                    <div className="absolute left-0 md:left-8 top-0 h-full w-[2px] bg-slate-800/50 rounded-full overflow-hidden">
                         {/* Animated Scroll Progress Line */}
                         <div
-                            className="bg-blue-500 w-full origin-top"
+                            className="bg-blue-500 w-full origin-top transition-all duration-100 ease-linear"
                             style={{ height: `${scrollHeight}%` }}
-                        ></div>
+                        />
                     </div>
 
-                    <div className="space-y-12">
+                    <div className="space-y-16">
                         {experiences.map((exp, index) => (
                             <div
                                 key={index}
@@ -134,21 +135,26 @@ export function Experience() {
 
                                 {/* Timeline Dot */}
                                 <div
-                                    className={`absolute left-[-9px] md:left-[23px] top-1/2 -translate-y-1/2 w-5 h-5 rounded-full border-4 border-slate-950 z-20 transition-all duration-500 ${activeIndexes.includes(index)
-                                        ? "bg-blue-500 scale-125 shadow-[0_0_0_4px_rgba(59,130,246,0.3)]"
-                                        : "bg-slate-700"
-                                        }`}
-                                ></div>
+                                    className={`
+                                        absolute left-[-9px] md:left-[23px] top-1/2 -translate-y-1/2 w-5 h-5 rounded-full border-4 border-slate-950 z-20 transition-all duration-500 
+                                        ${activeIndexes.includes(index)
+                                            ? "bg-blue-500 scale-125 shadow-[0_0_0_4px_rgba(59,130,246,0.2)]"
+                                            : "bg-slate-700"
+                                        }
+                                    `}
+                                />
 
                                 {/* Content Card */}
                                 <div
                                     className={`
-                                        group relative overflow-hidden bg-white/[0.03] backdrop-blur-xl border border-white/10 p-8 rounded-3xl
+                                        group relative overflow-hidden 
+                                        bg-white/[0.03] backdrop-blur-xl border border-white/10 
+                                        p-8 rounded-3xl
                                         transition-all duration-500 ease-out
                                         hover:bg-white/[0.05] hover:scale-[1.01] hover:shadow-2xl hover:shadow-blue-500/10
                                         ${activeIndexes.includes(index)
-                                            ? "border-white/20 hover:border-white/20 shadow-2xl shadow-blue-500/10"
-                                            : "border-white/10 hover:border-white/20"
+                                            ? "border-white/20 shadow-lg shadow-blue-500/5"
+                                            : "border-white/10"
                                         }
                                     `}
                                 >
@@ -157,45 +163,51 @@ export function Experience() {
 
                                     <div className="relative z-10">
 
-                                        <div className={`flex flex-col md:flex-row md:items-start md:justify-between gap-4 ${exp.items.length > 0 ? "mb-6" : ""}`}>
-                                            <div className="flex items-center gap-4">
-                                                <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center p-2 border border-white/10">
+                                        <div className={`flex flex-col md:flex-row md:items-start md:justify-between gap-4 ${exp.items.length > 0 ? "mb-4" : ""}`}>
+                                            <div className="flex items-start gap-4">
+                                                <div className="w-24 h-24 bg-white/5 rounded-2xl flex items-center justify-center p-4 border border-white/10 group-hover:scale-110 transition-transform duration-500">
                                                     <img src={exp.logo} alt={exp.company} className="w-full h-full object-contain" />
                                                 </div>
                                                 <div>
-                                                    <h3 className="text-xl font-bold text-white mb-1">{exp.role}</h3>
-                                                    <div className="flex items-center gap-2 text-slate-400">
-                                                        <span className="text-blue-400 font-medium">{exp.company}</span>
-                                                        <span className="w-1 h-1 bg-slate-600 rounded-full"></span>
-                                                        <span className="text-sm flex items-center gap-1">
-                                                            <MapPin className="w-3 h-3" /> {exp.location}
+                                                    <h3 className="text-xl font-bold text-white mb-1 group-hover:text-blue-400 transition-colors">
+                                                        {exp.role}
+                                                    </h3>
+                                                    <div className="text-slate-400 font-medium mb-1">{exp.company}</div>
+
+                                                    <div className="flex flex-wrap items-center gap-3 text-sm text-slate-500 mt-2">
+                                                        <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/5">
+                                                            <MapPin className="w-3.5 h-3.5" />
+                                                            {exp.location}
                                                         </span>
                                                         {exp.gpa && (
-                                                            <>
-                                                                <span className="w-1 h-1 bg-slate-600 rounded-full"></span>
-                                                                <span className="text-emerald-400 font-medium text-sm">
-                                                                    {exp.gpa}
-                                                                </span>
-                                                            </>
+                                                            <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400">
+                                                                <span className="font-semibold">{exp.gpa}</span>
+                                                            </span>
                                                         )}
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <div className="flex items-center gap-2 text-slate-500 text-sm font-medium bg-slate-800/50 px-3 py-1 rounded-full w-fit">
-                                                <Calendar className="w-3 h-3" />
+                                            <div className="flex items-center gap-2 text-slate-400 text-sm font-medium bg-white/5 px-4 py-1.5 rounded-full border border-white/5 self-start shrink-0">
+                                                <Calendar className="w-4 h-4" />
                                                 {exp.date || exp.period}
                                             </div>
                                         </div>
 
-                                        <ul className="space-y-3">
-                                            {exp.items.map((item, i) => (
-                                                <li key={i} className="flex items-start gap-3 text-slate-400 leading-relaxed">
-                                                    <span className="text-blue-500 mt-1.5 font-bold">▸</span>
-                                                    <span>{item}</span>
-                                                </li>
-                                            ))}
-                                        </ul>
+
+
+                                        {exp.items.length > 0 && (
+                                            <ul className="space-y-4">
+                                                {exp.items.map((item, i) => (
+                                                    <li key={i} className="flex items-start gap-3 group/item">
+                                                        <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-500 box-shadow-blue group-hover/item:scale-150 transition-all duration-300" />
+                                                        <span className="text-slate-400 leading-relaxed group-hover/item:text-slate-300 transition-colors">
+                                                            {item}
+                                                        </span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        )}
                                     </div>
                                 </div>
                             </div>

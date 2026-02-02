@@ -175,7 +175,7 @@ export function Skills() {
                                     </div>
                                 </div>
 
-                                <div className="flex flex-wrap gap-2 mt-auto">
+                                <div className="flex flex-wrap gap-2">
                                     {category.skills.map((skill, skillIndex) => (
                                         <div
                                             key={skillIndex}

@@ -16,7 +16,7 @@ export function About() {
                             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                                 About Me
                             </h2>
-                            <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+                            <div className="w-20 h-1 bg-white rounded-full"></div>
                         </div>
 
                         {/* Bio Section */}

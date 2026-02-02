@@ -74,9 +74,21 @@ export function Experience() {
             location: "Bangkok, Thailand",
             logo: witsawaLogo,
             items: [
-                "Built frontend interfaces using Ant Design and React, focusing on mobile responsiveness and real client requirements.",
-                "Implemented backend endpoints with NestJS to retrieve data and export reports to Excel.",
-                "Collaborated with the team to deliver scalable solutions."
+                <>
+                    Engineered high-fidelity responsive landing pages (e.g.,{" "}
+                    <a
+                        href="https://waywork.co/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-400 hover:text-blue-300 transition-colors border-b border-blue-400/30 hover:border-blue-300"
+                    >
+                        waywork.co
+                    </a>
+                    ) using React and Ant Design, ensuring pixel-perfect implementation from Figma designs.
+                </>,
+                "Contributed to the Waywork App ecosystem by identifying and patching frontend bugs, improving overall system stability and user experience for the core product.",
+                "Developed backend reporting endpoints to automate data extraction, enabling high-performance generation of Excel and PDF documents for business operations.",
+                "Streamlined development workflows by utilizing Ant Design components to build scalable and consistent UI/UX across multiple client-facing projects."
             ]
         },
         {
@@ -88,10 +100,7 @@ export function Experience() {
             location: "Chiang Mai, Thailand",
             gpa: "GPA 3.29",
             logo: cmuLogo,
-            items: [
-                "Focusing on bridging software development with security principles.",
-                "Active participant in departmental activities and tech exploration."
-            ]
+            items: []
         }
     ];
 
@@ -133,51 +142,61 @@ export function Experience() {
 
                                 {/* Content Card */}
                                 <div
-                                    className={`bg-slate-900/40 backdrop-blur-md rounded-xl p-6 border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-500/5 ${activeIndexes.includes(index)
-                                        ? "border-white/10 shadow-xl shadow-blue-500/5 -translate-y-1"
-                                        : "border-white/5 hover:border-white/10"
-                                        }`}
+                                    className={`
+                                        group relative overflow-hidden bg-white/[0.03] backdrop-blur-xl border border-white/10 p-8 rounded-3xl
+                                        transition-all duration-500 ease-out
+                                        hover:bg-white/[0.05] hover:scale-[1.01] hover:shadow-2xl hover:shadow-blue-500/10
+                                        ${activeIndexes.includes(index)
+                                            ? "border-white/20 hover:border-white/20 shadow-2xl shadow-blue-500/10"
+                                            : "border-white/10 hover:border-white/20"
+                                        }
+                                    `}
                                 >
+                                    {/* Inner Glow Effect */}
+                                    <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                                    <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
-                                        <div className="flex items-center gap-4">
-                                            <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center p-2 border border-white/10">
-                                                <img src={exp.logo} alt={exp.company} className="w-full h-full object-contain" />
-                                            </div>
-                                            <div>
-                                                <h3 className="text-xl font-bold text-white mb-1">{exp.role}</h3>
-                                                <div className="flex items-center gap-2 text-slate-400">
-                                                    <span className="text-blue-400 font-medium">{exp.company}</span>
-                                                    <span className="w-1 h-1 bg-slate-600 rounded-full"></span>
-                                                    <span className="text-sm flex items-center gap-1">
-                                                        <MapPin className="w-3 h-3" /> {exp.location}
-                                                    </span>
-                                                    {exp.gpa && (
-                                                        <>
-                                                            <span className="w-1 h-1 bg-slate-600 rounded-full"></span>
-                                                            <span className="text-emerald-400 font-medium text-sm">
-                                                                {exp.gpa}
-                                                            </span>
-                                                        </>
-                                                    )}
+                                    <div className="relative z-10">
+
+                                        <div className={`flex flex-col md:flex-row md:items-start md:justify-between gap-4 ${exp.items.length > 0 ? "mb-6" : ""}`}>
+                                            <div className="flex items-center gap-4">
+                                                <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center p-2 border border-white/10">
+                                                    <img src={exp.logo} alt={exp.company} className="w-full h-full object-contain" />
+                                                </div>
+                                                <div>
+                                                    <h3 className="text-xl font-bold text-white mb-1">{exp.role}</h3>
+                                                    <div className="flex items-center gap-2 text-slate-400">
+                                                        <span className="text-blue-400 font-medium">{exp.company}</span>
+                                                        <span className="w-1 h-1 bg-slate-600 rounded-full"></span>
+                                                        <span className="text-sm flex items-center gap-1">
+                                                            <MapPin className="w-3 h-3" /> {exp.location}
+                                                        </span>
+                                                        {exp.gpa && (
+                                                            <>
+                                                                <span className="w-1 h-1 bg-slate-600 rounded-full"></span>
+                                                                <span className="text-emerald-400 font-medium text-sm">
+                                                                    {exp.gpa}
+                                                                </span>
+                                                            </>
+                                                        )}
+                                                    </div>
                                                 </div>
                                             </div>
+
+                                            <div className="flex items-center gap-2 text-slate-500 text-sm font-medium bg-slate-800/50 px-3 py-1 rounded-full w-fit">
+                                                <Calendar className="w-3 h-3" />
+                                                {exp.date || exp.period}
+                                            </div>
                                         </div>
 
-                                        <div className="flex items-center gap-2 text-slate-500 text-sm font-medium bg-slate-800/50 px-3 py-1 rounded-full w-fit">
-                                            <Calendar className="w-3 h-3" />
-                                            {exp.date || exp.period}
-                                        </div>
+                                        <ul className="space-y-3">
+                                            {exp.items.map((item, i) => (
+                                                <li key={i} className="flex items-start gap-3 text-slate-400 leading-relaxed">
+                                                    <span className="text-blue-500 mt-1.5 font-bold">▸</span>
+                                                    <span>{item}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
                                     </div>
-
-                                    <ul className="space-y-3">
-                                        {exp.items.map((item, i) => (
-                                            <li key={i} className="flex items-start gap-3 text-slate-400 leading-relaxed">
-                                                <span className="text-blue-500 mt-1.5 font-bold">▸</span>
-                                                <span>{item}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
                                 </div>
                             </div>
                         ))}

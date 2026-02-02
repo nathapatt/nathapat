@@ -53,25 +53,30 @@ export function Contact() {
                     </div>
 
                     {/* Right Column: Card */}
-                    <div className="bg-slate-900/50 backdrop-blur-sm border border-white/10 rounded-2xl p-8 md:p-10">
-                        <h3 className="text-2xl font-bold text-white mb-4">Let's work together</h3>
-                        <p className="text-slate-400 mb-8 leading-relaxed">
-                            Open to new projects and collaborations.
-                            Let’s build impactful solutions together.
-                        </p>
+                    <div className="group relative overflow-hidden bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-10 hover:bg-white/[0.05] transition-all duration-500 ease-out hover:scale-[1.01] hover:shadow-2xl hover:shadow-purple-500/10">
+                        {/* Inner Glow Effect */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                        <a
-                            href="mailto:nathapat.mind@gmail.com"
-                            className="inline-flex items-center justify-center w-full px-6 py-4 text-white font-semibold bg-[oklch(65%_0.14_254.6)] hover:opacity-90 rounded-xl transition-all duration-200 shadow-[0_0_15px_oklch(65%_0.14_254.6/0.2)] hover:shadow-[0_0_25px_oklch(65%_0.14_254.6/0.4)] active:scale-[0.98]"
-                        >
-                            Send me an email
-                        </a>
+                        <div className="relative z-10">
+                            <h3 className="text-2xl font-bold text-white mb-4">Let's work together</h3>
+                            <p className="text-slate-400 mb-8 leading-relaxed">
+                                Open to new projects and collaborations.
+                                Let’s build impactful solutions together.
+                            </p>
+
+                            <a
+                                href="mailto:nathapat.mind@gmail.com"
+                                className="inline-flex items-center justify-center w-full px-6 py-4 text-white font-semibold bg-[oklch(65%_0.14_254.6)] hover:opacity-90 rounded-xl transition-all duration-200 shadow-[0_0_15px_oklch(65%_0.14_254.6/0.2)] hover:shadow-[0_0_25px_oklch(65%_0.14_254.6/0.4)] active:scale-[0.98]"
+                            >
+                                Send me an email
+                            </a>
+                        </div>
                     </div>
-                </div>
 
-                {/* Footer */}
-                <div className="mt-24 pt-8 border-t border-white/5 text-slate-500 text-sm text-center">
-                    <p>&copy; {new Date().getFullYear()} Nathapat. Built with React & Tailwind.</p>
+                    {/* Footer */}
+                    <div className="mt-24 pt-8 border-t border-white/5 text-slate-500 text-sm text-center">
+                        <p>&copy; {new Date().getFullYear()} Nathapat. Built with React & Tailwind.</p>
+                    </div>
                 </div>
             </div>
         </section>

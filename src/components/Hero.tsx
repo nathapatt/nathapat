@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button"
-import { ArrowDown, ArrowRight } from "lucide-react"
+import { ArrowDown } from "lucide-react"
 import { StarBackground } from "@/components/StarBackground"
 import { RevealOnScroll } from "@/components/RevealOnScroll"
 import { useState, useEffect } from "react"
@@ -45,15 +45,12 @@ export function Hero() {
             {/* Stars Background (Canvas) */}
             <StarBackground />
 
-
-
-
             <RevealOnScroll>
                 <div className="container relative z-10 px-4 flex flex-col items-center justify-center text-center space-y-8">
 
                     {/* Profile Picture (Centered & Minimal) */}
                     <div className="relative group w-32 h-32 md:w-40 md:h-40 mb-4">
-                        <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-emerald-500 to-blue-500 animate-gradient rounded-full blur opacity-25 group-hover:opacity-75 transition duration-500"></div>
+                        <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-blue-500 animate-gradient rounded-full blur opacity-25 group-hover:opacity-75 transition duration-500"></div>
                         <div className="relative aspect-square rounded-full bg-slate-900 border-2 border-slate-800 overflow-hidden">
                             <img
                                 src={mySelf}

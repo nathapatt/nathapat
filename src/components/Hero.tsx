@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button"
-import { ArrowRight } from "lucide-react"
+import { ArrowDown, ArrowRight } from "lucide-react"
 import { StarBackground } from "@/components/StarBackground"
 import { RevealOnScroll } from "@/components/RevealOnScroll"
 import { useState, useEffect } from "react"
@@ -90,10 +90,10 @@ export function Hero() {
                     <div className="pt-8">
                         <Button
                             variant="link"
-                            className="text-slate-400 hover:text-white transition-colors text-lg"
-                            onClick={() => document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" })}
+                            className="text-slate-400 hover:text-white transition-colors text-lg p-6"
+                            onClick={() => document.querySelector("#about")?.scrollIntoView({ behavior: "smooth" })}
                         >
-                            View Selected Work <ArrowRight className="ml-2 w-4 h-4" />
+                            View Selected Work <ArrowDown className="ml-2 w-4 h-4" />
                         </Button>
                     </div>
 
@@ -101,7 +101,7 @@ export function Hero() {
             </RevealOnScroll>
 
             {/* Bottom Fade */}
-            <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-slate-950 to-transparent z-10"></div>
+            <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-slate-950 to-transparent z-10 pointer-events-none"></div>
         </section>
     )
 }

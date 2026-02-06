@@ -77,7 +77,7 @@ export function Projects() {
                         Featured Projects
                     </h2>
                     <p className="max-w-[600px] text-slate-400 text-lg">
-                        Building digital products that solve real problems.
+                        Selected Work A collection of projects I’ve built.
                     </p>
                 </div>
 

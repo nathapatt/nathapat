@@ -223,7 +223,7 @@ export function Experience() {
                                             <ul className="space-y-4">
                                                 {exp.items.map((item, i) => (
                                                     <li key={i} className="flex items-start gap-3 group/item">
-                                                        <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-500 box-shadow-blue group-hover/item:scale-150 transition-all duration-300" />
+                                                        <div className="mt-2 w-1.5 h-1.5 rounded-full bg-blue-400/80 shrink-0 group-hover/item:bg-blue-400 transition-colors" />
                                                         <span className="text-slate-300 text-base leading-relaxed group-hover/item:text-white transition-colors">
                                                             {item}
                                                         </span>

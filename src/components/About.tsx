@@ -13,7 +13,7 @@ export function About() {
                 <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
 
                     {/* Left Column: Bio & Resume */}
-                    <div className="space-y-8">
+                    <div className={`space-y-8 ${!isDesktop ? 'mx-5' : ''}`}>
                         {/* Header */}
                         <div>
                             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">

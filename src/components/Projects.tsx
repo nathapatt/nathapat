@@ -130,11 +130,13 @@ export function Projects() {
                                 </div>
                             </div>
 
+                            {/* Gradient Card with Description */}
                             <a
                                 href={project.links.demo}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="block relative aspect-[4/3] w-full rounded-[2.5rem] overflow-hidden transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-purple-500/10"
+                                className={`block relative w-full rounded-[2rem] overflow-hidden transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-purple-500/10 ${isMobile ? '' : 'aspect-[4/3]'
+                                    }`}
                             >
                                 {/* Gradient Background */}
                                 <div
@@ -144,41 +146,90 @@ export function Projects() {
                                 {/* Content Overlay */}
                                 <div className="absolute inset-0 bg-[url('/noise.png')] opacity-20 mix-blend-overlay" />
 
-                                <div className={`relative h-full flex flex-col justify-between z-20 ${isMobile ? 'p-6' : 'p-12'}`}>
-                                    <p className={`text-white font-medium leading-relaxed drop-shadow-md ${isMobile ? 'text-sm max-w-full' : 'text-base max-w-[90%]'}`}>
+                                <div className={`relative z-20 ${isMobile ? 'p-5' : 'p-12 h-full flex flex-col justify-between'}`}>
+                                    <p className={`text-white font-medium leading-relaxed drop-shadow-md ${isMobile ? 'text-sm' : 'text-base max-w-[90%]'
+                                        }`}>
                                         {project.description}
                                     </p>
                                 </div>
 
-                                {/* Images Area */}
-                                <div className="absolute bottom-0 left-0 right-0 top-0 z-10 pointer-events-none">
-                                    {/* Desktop Image */}
-                                    {project.image && (
-                                        <motion.div
-                                            className={`absolute bottom-0 left-1/2 -translate-x-1/2 bg-slate-950 shadow-2xl transition-transform duration-500 group-hover:scale-105 origin-bottom overflow-hidden ${project.mobileImage ? "w-[75%] rounded-t-lg z-10 left-[45%] translate-x-[-50%]" : "w-[80%] rounded-t-xl z-10"
-                                                }`}
-                                        >
-                                            {/* MacOS Window Header */}
-                                            <div className="h-5 md:h-6 bg-black flex items-center gap-1.5 px-3 border-b border-slate-700">
-                                                <div className="w-2 md:w-2.5 h-2 md:h-2.5 rounded-full bg-red-500" />
-                                                <div className="w-2 md:w-2.5 h-2 md:h-2.5 rounded-full bg-yellow-500" />
-                                                <div className="w-2 md:w-2.5 h-2 md:h-2.5 rounded-full bg-green-500" />
-                                            </div>
-                                            <img
-                                                src={project.image}
-                                                alt={project.title}
-                                                className="w-full h-auto object-cover"
-                                            />
-                                        </motion.div>
-                                    )}
+                                {/* Images Area - Only show inside card on tablet/desktop */}
+                                {!isMobile && (
+                                    <div className="absolute bottom-0 left-0 right-0 top-0 z-10 pointer-events-none">
+                                        {/* Desktop Image */}
+                                        {project.image && (
+                                            <motion.div
+                                                className={`absolute bottom-0 left-1/2 -translate-x-1/2 bg-slate-950 shadow-2xl transition-transform duration-500 group-hover:scale-105 origin-bottom overflow-hidden ${project.mobileImage ? "w-[75%] rounded-t-lg z-10 left-[45%] translate-x-[-50%]" : "w-[80%] rounded-t-xl z-10"
+                                                    }`}
+                                            >
+                                                {/* MacOS Window Header */}
+                                                <div className="h-5 md:h-6 bg-black flex items-center gap-1.5 px-3 border-b border-slate-700">
+                                                    <div className="w-2 md:w-2.5 h-2 md:h-2.5 rounded-full bg-red-500" />
+                                                    <div className="w-2 md:w-2.5 h-2 md:h-2.5 rounded-full bg-yellow-500" />
+                                                    <div className="w-2 md:w-2.5 h-2 md:h-2.5 rounded-full bg-green-500" />
+                                                </div>
+                                                <img
+                                                    src={project.image}
+                                                    alt={project.title}
+                                                    className="w-full h-auto object-cover"
+                                                />
+                                            </motion.div>
+                                        )}
 
-                                    {/* Mobile Image (Overlapping) */}
+                                        {/* Mobile Image (Overlapping) */}
+                                        {project.mobileImage && (
+                                            <motion.div
+                                                className="absolute bottom-0 right-4 md:right-8 h-[60%] w-auto aspect-[9/19] bg-slate-950 rounded-[1.5rem] md:rounded-[2rem] border-[4px] md:border-[6px] border-slate-900 shadow-2xl transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-4 origin-bottom z-20 overflow-hidden"
+                                            >
+                                                {/* Dynamic Island */}
+                                                <div className="absolute top-2 left-1/2 -translate-x-1/2 w-8 md:w-12 h-2 md:h-3 bg-black rounded-full z-20" />
+                                                <img
+                                                    src={project.mobileImage}
+                                                    alt={`${project.title} Mobile`}
+                                                    className="w-full h-full object-cover"
+                                                />
+                                            </motion.div>
+                                        )}
+
+                                        {/* Abstract decorative circles if no images */}
+                                        {!project.image && !project.mobileImage && (
+                                            <>
+                                                <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-white/10 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700 ease-in-out" />
+                                                <div className="absolute -top-20 -left-20 w-48 h-48 bg-black/10 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700 ease-in-out" />
+                                            </>
+                                        )}
+                                    </div>
+                                )}
+                            </a>
+
+                            {/* Mobile: Device Frames Outside Card */}
+                            {isMobile && project.image && (
+                                <div className="relative w-full flex justify-center items-end mt-4">
+                                    {/* Desktop Frame */}
+                                    <motion.div
+                                        className={`bg-slate-950 shadow-2xl rounded-lg overflow-hidden ${project.mobileImage ? 'w-[75%] mr-[-15%]' : 'w-[90%]'
+                                            }`}
+                                    >
+                                        {/* MacOS Window Header */}
+                                        <div className="h-5 bg-black flex items-center gap-1.5 px-3 border-b border-slate-700">
+                                            <div className="w-2 h-2 rounded-full bg-red-500" />
+                                            <div className="w-2 h-2 rounded-full bg-yellow-500" />
+                                            <div className="w-2 h-2 rounded-full bg-green-500" />
+                                        </div>
+                                        <img
+                                            src={project.image}
+                                            alt={project.title}
+                                            className="w-full h-auto object-cover"
+                                        />
+                                    </motion.div>
+
+                                    {/* Mobile Frame */}
                                     {project.mobileImage && (
                                         <motion.div
-                                            className="absolute bottom-0 right-4 md:right-8 h-[60%] w-auto aspect-[9/19] bg-slate-950 rounded-[1.5rem] md:rounded-[2rem] border-[4px] md:border-[6px] border-slate-900 shadow-2xl transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-4 origin-bottom z-20 overflow-hidden"
+                                            className="relative w-[30%] aspect-[9/19] bg-slate-950 rounded-[1rem] border-[3px] border-slate-900 shadow-2xl overflow-hidden ml-[-10%] z-10"
                                         >
                                             {/* Dynamic Island */}
-                                            <div className="absolute top-2 left-1/2 -translate-x-1/2 w-8 md:w-12 h-2 md:h-3 bg-black rounded-full z-20" />
+                                            <div className="absolute top-1 left-1/2 -translate-x-1/2 w-6 h-1.5 bg-black rounded-full z-20" />
                                             <img
                                                 src={project.mobileImage}
                                                 alt={`${project.title} Mobile`}
@@ -186,16 +237,8 @@ export function Projects() {
                                             />
                                         </motion.div>
                                     )}
-
-                                    {/* Abstract decorative circles if no images */}
-                                    {!project.image && !project.mobileImage && (
-                                        <>
-                                            <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-white/10 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700 ease-in-out" />
-                                            <div className="absolute -top-20 -left-20 w-48 h-48 bg-black/10 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700 ease-in-out" />
-                                        </>
-                                    )}
                                 </div>
-                            </a>
+                            )}
                         </motion.div>
                     ))}
                 </div>

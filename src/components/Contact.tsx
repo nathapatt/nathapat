@@ -47,6 +47,11 @@ export function Contact() {
                                     icon={<Linkedin className="w-5 h-5" />}
                                     label="LinkedIn"
                                 />
+                                <SocialLink
+                                    href="https://th.jobsdb.com/th/profiles/nathapat-nerangsi-yLgrwFC2dg"
+                                    icon={<span className="text-[10px] font-bold leading-none">JobsDB</span>}
+                                    label="JobsDB"
+                                />
                             </div>
                         </div>
                     </div>

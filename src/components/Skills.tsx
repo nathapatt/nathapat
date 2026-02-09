@@ -46,7 +46,7 @@ const skillCategories = [
         title: "Programming Languages",
         icon: <Code2 className="w-6 h-6" />,
         description: "Core languages for building robust and scalable applications.",
-        span: "md:col-span-2",
+        span: "lg:col-span-2",
         skills: [
             { name: "Java", icon: <FaJava className="text-[#ed8b00]" /> },
             { name: "TypeScript", icon: <SiTypescript className="text-[#3178C6]" /> },
@@ -60,7 +60,7 @@ const skillCategories = [
         title: "Cloud & DevOps",
         icon: <Cloud className="w-6 h-6" />,
         description: "Infrastructure, deployment, and cloud services.",
-        span: "md:col-span-1",
+        span: "lg:col-span-1",
         skills: [
             { name: "Huawei Cloud", icon: <SiHuawei className="text-[#C7000B]" /> },
             { name: "Google Cloud", icon: <SiGooglecloud className="text-[#4285F4]" /> },
@@ -73,7 +73,7 @@ const skillCategories = [
         title: "Database",
         icon: <Database className="w-6 h-6" />,
         description: "Data storage and management solutions.",
-        span: "md:col-span-1",
+        span: "lg:col-span-1",
         skills: [
             { name: "MongoDB", icon: <SiMongodb className="text-[#47A248]" /> },
             { name: "PostgreSQL", icon: <SiPostgresql className="text-[#4169E1]" /> },
@@ -86,7 +86,7 @@ const skillCategories = [
         title: "Frameworks & Tools",
         icon: <Layout className="w-6 h-6" />,
         description: "Modern frameworks and tools for efficient development.",
-        span: "md:col-span-2",
+        span: "lg:col-span-2",
         skills: [
             { name: "Spring Boot", icon: <SiSpringboot className="text-[#6DB33F]" /> },
             { name: "FastAPI", icon: <SiFastapi className="text-[#009688]" /> },
@@ -104,7 +104,7 @@ const skillCategories = [
         title: "Cybersecurity & Networking",
         icon: <ShieldCheck className="w-6 h-6" />,
         description: "Ensuring security and network integrity.",
-        span: "md:col-span-2",
+        span: "lg:col-span-2",
         skills: [
             { name: "Penetration Testing", icon: <Lock className="text-white/80" /> },
             { name: "Risk Assessments", icon: <FileText className="text-white/80" /> },
@@ -116,7 +116,7 @@ const skillCategories = [
         title: "Languages",
         icon: <Globe className="w-6 h-6" />,
         description: "Communication and spoken languages.",
-        span: "md:col-span-1",
+        span: "lg:col-span-1",
         skills: [
             { name: "Thai", icon: <span className="font-bold text-xs">TH</span> },
             { name: "English", icon: <span className="font-bold text-xs">EN</span> }
@@ -141,7 +141,7 @@ export function Skills() {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {skillCategories.map((category, index) => (
                         <div
                             key={index}

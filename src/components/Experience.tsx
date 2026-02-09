@@ -1,9 +1,11 @@
 import { Calendar, MapPin } from "lucide-react"
+import { useResponsive } from "@/hooks/useResponsive"
 import witsawaLogo from "@/assets/witsawa.png"
 import cmuLogo from "@/assets/chiangmai_uni.svg"
 import { useEffect, useRef, useState } from "react"
 
 export function Experience() {
+    const { isMobile } = useResponsive();
     const containerRef = useRef<HTMLDivElement>(null);
     const [scrollHeight, setScrollHeight] = useState(0);
     const [activeIndexes, setActiveIndexes] = useState<number[]>([]);
@@ -115,28 +117,49 @@ export function Experience() {
                     </h2>
                 </div>
 
-                <div className="relative max-w-4xl mx-auto pl-8 md:pl-0" ref={containerRef}>
-                    {/* Vertical Line Container */}
-                    <div className="absolute left-0 md:left-8 top-0 h-full w-[2px] bg-slate-800/50 rounded-full overflow-hidden">
-                        {/* Animated Scroll Progress Line */}
-                        <div
-                            className="bg-blue-500 w-full origin-top transition-all duration-100 ease-linear"
-                            style={{ height: `${scrollHeight}%` }}
-                        />
-                    </div>
+                <div className={`relative max-w-4xl mx-auto ${isMobile ? "pl-0" : "pl-8 md:pl-0"}`} ref={containerRef}>
+                    {/* Vertical Line Container - Hidden on mobile, using individual connectors instead */}
+                    {!isMobile && (
+                        <div className={`absolute top-0 h-full w-[2px] bg-slate-800/50 rounded-full overflow-hidden left-0 md:left-8`}>
+                            {/* Animated Scroll Progress Line */}
+                            <div
+                                className="bg-blue-500 w-full origin-top transition-all duration-100 ease-linear"
+                                style={{ height: `${scrollHeight}%` }}
+                            />
+                        </div>
+                    )}
 
                     <div className="space-y-16">
                         {experiences.map((exp, index) => (
                             <div
                                 key={index}
-                                className="relative pl-8 md:pl-16 group"
+                                className={`relative group ${isMobile ? "pl-0" : "pl-8 md:pl-16"}`}
                                 ref={(el) => { cardRefs.current[index] = el }}
                             >
+                                {/* Mobile Connector Line - connects bottom of this card to top of next card */}
+                                {isMobile && index < experiences.length - 1 && (
+                                    <div
+                                        className={`
+                                            absolute left-1/2 -translate-x-1/2 w-[2px] bg-slate-800/50 rounded-full overflow-hidden
+                                            top-full h-16
+                                        `}
+                                        style={{ zIndex: 10 }}
+                                    >
+                                        {/* Animated fill for mobile connector */}
+                                        <div
+                                            className="bg-blue-500 w-full origin-top transition-all duration-100 ease-linear"
+                                            style={{
+                                                height: activeIndexes.includes(index) ? '100%' : '0%'
+                                            }}
+                                        />
+                                    </div>
+                                )}
 
                                 {/* Timeline Dot */}
                                 <div
                                     className={`
-                                        absolute left-[-9px] md:left-[23px] top-1/2 -translate-y-1/2 w-5 h-5 rounded-full border-4 border-slate-950 z-20 transition-all duration-500 
+                                        absolute top-1/2 -translate-y-1/2 w-5 h-5 rounded-full border-4 border-slate-950 z-20 transition-all duration-500 
+                                        ${isMobile ? "hidden" : "left-[-9px] md:left-[23px]"}
                                         ${activeIndexes.includes(index)
                                             ? "bg-blue-500 scale-125 shadow-[0_0_0_4px_rgba(59,130,246,0.2)]"
                                             : "bg-slate-700"

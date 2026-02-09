@@ -1,6 +1,8 @@
 import { Github, Linkedin, Mail } from "lucide-react"
+import { useResponsive } from "../hooks/useResponsive"
 
 export function Contact() {
+    const { isMobile } = useResponsive()
     return (
         <section id="contact" className="pt-20 pb-0 bg-slate-950 border-t border-white/5 relative overflow-hidden">
             {/* Background Gradients */}
@@ -11,7 +13,7 @@ export function Contact() {
                 <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-start">
 
                     {/* Left Column */}
-                    <div className="space-y-10">
+                    <div className={`space-y-10 ${isMobile ? 'mx-5' : ''}`}>
                         <div>
                             <h2 className="text-3xl font-bold text-white relative w-fit">
                                 Get In Touch

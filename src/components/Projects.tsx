@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Github } from "lucide-react";
+import { useResponsive } from "@/hooks/useResponsive";
 import medImage from "../assets/med.png";
 import orderImage from "../assets/order.png";
 import orderClientImage from "../assets/order_client.png";
@@ -66,6 +67,8 @@ const projects: Project[] = [
 ];
 
 export function Projects() {
+    const { isMobile, isTablet } = useResponsive();
+
     return (
         <section id="projects" className="py-24 md:py-32 bg-[#020617] relative overflow-hidden">
             {/* Background Dots */}
@@ -81,7 +84,7 @@ export function Projects() {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
                     {projects.map((project, index) => (
                         <motion.div
                             key={project.id}
@@ -91,12 +94,12 @@ export function Projects() {
                             transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
                             className="flex flex-col gap-4 group"
                         >
-                            <div className="flex justify-between items-end px-2">
+                            <div className={`flex ${(isMobile || isTablet) ? 'flex-col gap-3' : 'justify-between items-end'} px-2`}>
                                 <div className="space-y-1">
                                     <span className="text-xs font-medium tracking-widest text-slate-500 uppercase">
                                         {project.id} —— {project.category}
                                     </span>
-                                    <h3 className="text-3xl font-bold text-slate-100 group-hover:text-white transition-colors">
+                                    <h3 className={`font-bold text-slate-100 group-hover:text-white transition-colors ${isMobile ? 'text-xl' : 'text-3xl'}`}>
                                         {project.title}
                                     </h3>
                                 </div>
@@ -141,8 +144,8 @@ export function Projects() {
                                 {/* Content Overlay */}
                                 <div className="absolute inset-0 bg-[url('/noise.png')] opacity-20 mix-blend-overlay" />
 
-                                <div className="relative h-full flex flex-col justify-between p-8 md:p-12 z-20">
-                                    <p className="text-white text-base font-medium leading-relaxed max-w-[90%] drop-shadow-md">
+                                <div className={`relative h-full flex flex-col justify-between z-20 ${isMobile ? 'p-6' : 'p-12'}`}>
+                                    <p className={`text-white font-medium leading-relaxed drop-shadow-md ${isMobile ? 'text-sm max-w-full' : 'text-base max-w-[90%]'}`}>
                                         {project.description}
                                     </p>
                                 </div>

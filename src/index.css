@@ -2,6 +2,16 @@
 @import "tailwindcss";
 
 @theme {
+  /* Responsive Breakpoints */
+  /* Mobile: 0-767px (default, no prefix needed) */
+  /* Tablet: 768-1023px (use md: prefix) */
+  /* Desktop: 1024px+ (use lg: prefix) */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+
   --color-border: hsl(var(--border));
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));

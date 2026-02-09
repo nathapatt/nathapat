@@ -1,6 +1,9 @@
 import { Award, FileBadge, Eye } from "lucide-react";
+import { useResponsive } from "@/hooks/useResponsive";
 
 export function About() {
+    const { isDesktop } = useResponsive();
+
     return (
         <section id="about" className="py-20 bg-slate-950 relative overflow-hidden">
             {/* Background decoration */}
@@ -36,7 +39,7 @@ export function About() {
                         </div>
 
                         {/* Resume Button */}
-                        <div className="pt-4">
+                        <div className={`pt-4 ${!isDesktop ? 'flex justify-center' : ''}`}>
                             <a
                                 href="https://drive.google.com/file/d/1uY9gz-sF48VNW7KteClBU_p6908lPDw2/view?usp=sharing"
                                 target="_blank"

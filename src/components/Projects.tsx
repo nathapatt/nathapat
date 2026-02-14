@@ -143,9 +143,6 @@ export function Projects() {
                                     className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-90 transition-opacity duration-500 group-hover:opacity-100`}
                                 />
 
-                                {/* Content Overlay */}
-                                <div className="absolute inset-0 bg-[url('/noise.png')] opacity-20 mix-blend-overlay" />
-
                                 <div className={`relative z-20 ${isMobile ? 'p-5' : 'p-12 h-full flex flex-col justify-between'}`}>
                                     <p className={`text-white font-medium leading-relaxed drop-shadow-md ${isMobile ? 'text-sm' : 'text-base max-w-[90%]'
                                         }`}>

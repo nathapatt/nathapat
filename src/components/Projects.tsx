@@ -131,10 +131,7 @@ export function Projects() {
                             </div>
 
                             {/* Gradient Card with Description */}
-                            <a
-                                href={project.links.demo}
-                                target="_blank"
-                                rel="noopener noreferrer"
+                            <div
                                 className={`block relative w-full rounded-[2rem] overflow-hidden transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-purple-500/10 ${isMobile ? '' : 'aspect-[4/3]'
                                     }`}
                             >
@@ -197,7 +194,7 @@ export function Projects() {
                                         )}
                                     </div>
                                 )}
-                            </a>
+                            </div>
 
                             {/* Mobile: Device Frames Outside Card */}
                             {isMobile && project.image && (

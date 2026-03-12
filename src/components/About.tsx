@@ -41,7 +41,7 @@ export function About() {
                         {/* Resume Button */}
                         <div className={`pt-4 ${!isDesktop ? 'flex justify-center' : ''}`}>
                             <a
-                                href="https://drive.google.com/file/d/1uY9gz-sF48VNW7KteClBU_p6908lPDw2/view?usp=sharing"
+                                href="https://drive.google.com/file/d/1H2dUk1qmvqOYr7C-H_T0oGJLaGwojDTS/view?usp=sharing"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[oklch(65%_0.14_254.6)] hover:opacity-90 text-white font-medium transition-all duration-200 shadow-[0_0_15px_oklch(65%_0.14_254.6/0.2)] hover:shadow-[0_0_25px_oklch(65%_0.14_254.6/0.4)]"

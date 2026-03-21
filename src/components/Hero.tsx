@@ -39,7 +39,7 @@ export function Hero() {
     }, [text, isDeleting, loopNum, typingSpeed, roles]);
 
     return (
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-950 text-white pt-20">
+        <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-950 text-white pt-20">
             <div className="absolute inset-0 bg-gradient-to-b from-blue-950/20 via-slate-950 to-slate-950 z-0"></div>
             <StarBackground />
 

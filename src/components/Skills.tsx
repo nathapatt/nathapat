@@ -26,7 +26,6 @@ import {
     SiNextdotjs,
     SiNestjs,
     SiNodedotjs,
-
     SiHuawei,
     SiGooglecloud,
     SiDocker,
@@ -39,7 +38,8 @@ import {
 } from "react-icons/si"
 import { FaJava } from "react-icons/fa"
 import { VscAzure } from "react-icons/vsc"
-
+import { motion } from "framer-motion"
+import { fadeUpContainer, fadeUpItem, viewportOnce } from "@/lib/animations"
 
 const skillCategories = [
     {
@@ -127,43 +127,53 @@ const skillCategories = [
 export function Skills() {
     return (
         <section id="skills" className="py-32 bg-slate-950 relative overflow-hidden">
-            {/* Background Gradients - Subtle Apple-like glows */}
             <div className="absolute top-20 left-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />
             <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[120px] pointer-events-none" />
 
             <div className="container px-4 md:px-6 relative z-10 mx-auto max-w-6xl">
-                <div className="text-center mb-20">
-                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 font-display tracking-tight">
+                {/* Section Header */}
+                <motion.div
+                    className="text-center mb-20"
+                    variants={fadeUpContainer}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={viewportOnce}
+                >
+                    <motion.p variants={fadeUpItem} className="text-sm font-semibold uppercase tracking-widest text-blue-400 mb-4">
+                        What I Know
+                    </motion.p>
+                    <motion.h2 variants={fadeUpItem} className="text-4xl md:text-5xl font-bold text-white mb-6 font-display tracking-tight">
                         Skills & Technologies
-                    </h2>
-                    <p className="text-slate-400 max-w-2xl mx-auto text-lg font-light">
+                    </motion.h2>
+                    <motion.p variants={fadeUpItem} className="text-slate-400 max-w-2xl mx-auto text-lg font-light">
                         A curated stack of technologies I use to build digital products.
-                    </p>
-                </div>
+                    </motion.p>
+                </motion.div>
 
+                {/* Skills Grid - cascades in view */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {skillCategories.map((category, index) => (
-                        <div
+                        <motion.div
                             key={index}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, amount: 0.1 }}
+                            transition={{ duration: 0.6, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
                             className={`
                                 group relative overflow-hidden
                                 bg-white/[0.03] backdrop-blur-xl border border-white/10
                                 rounded-3xl p-8
                                 hover:bg-white/[0.05] transition-all duration-500 ease-out
                                 hover:scale-[1.01] hover:shadow-2xl hover:shadow-blue-500/10
-                                \${category.span}
+                                ${category.span}
                             `}
                         >
-                            {/* Inner Glow Effect */}
                             <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                             <div className="relative z-10 h-full flex flex-col">
                                 <div className="flex items-start gap-4 mb-6">
                                     <div className="p-3 bg-white/5 rounded-2xl border border-white/10 group-hover:scale-110 transition-transform duration-500">
-                                        {/* Clone element to force text-white if needed, though usually className cascade works */}
-                                        <div className="text-white">
-                                            {category.icon}
-                                        </div>
+                                        <div className="text-white">{category.icon}</div>
                                     </div>
                                     <div>
                                         <h3 className="text-xl font-semibold text-white/90 mb-1 group-hover:text-white transition-colors">
@@ -179,23 +189,15 @@ export function Skills() {
                                     {category.skills.map((skill, skillIndex) => (
                                         <div
                                             key={skillIndex}
-                                            className="
-                                                flex items-center gap-2 px-3 py-2 
-                                                bg-white/5 border border-white/5 rounded-xl 
-                                                text-slate-300 text-sm font-medium
-                                                hover:bg-white/10 hover:text-white hover:border-white/20 
-                                                transition-all duration-300 cursor-default
-                                            "
+                                            className="flex items-center gap-2 px-3 py-2 bg-white/5 border border-white/5 rounded-xl text-slate-300 text-sm font-medium hover:bg-white/10 hover:text-white hover:border-white/20 transition-all duration-300 cursor-default"
                                         >
-                                            <span className="text-lg opacity-80 group-hover/skill:opacity-100">
-                                                {skill.icon}
-                                            </span>
+                                            <span className="text-lg opacity-80">{skill.icon}</span>
                                             <span>{skill.name}</span>
                                         </div>
                                     ))}
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
             </div>

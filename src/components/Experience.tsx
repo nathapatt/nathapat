@@ -3,6 +3,8 @@ import { useResponsive } from "@/hooks/useResponsive"
 import witsawaLogo from "@/assets/witsawa.png"
 import cmuLogo from "@/assets/chiangmai_uni.svg"
 import { useEffect, useRef, useState } from "react"
+import { motion } from "framer-motion"
+import { fadeUpContainer, fadeUpItem, viewportOnce } from "@/lib/animations"
 
 export function Experience() {
     const { isMobile } = useResponsive();
@@ -16,11 +18,7 @@ export function Experience() {
             if (containerRef.current) {
                 const { top, height } = containerRef.current.getBoundingClientRect();
                 const windowHeight = window.innerHeight;
-
-                // Calculate how much of the section is visible/scrolled
-                // Start filling when top reaches center of viewport
                 const startThreshold = windowHeight * 0.5;
-
                 let percentage = 0;
                 if (top <= startThreshold) {
                     const scrolledDistance = startThreshold - top;
@@ -31,19 +29,12 @@ export function Experience() {
                     setScrollHeight(0);
                 }
 
-                // Check which items are "passed" by the line
-                // The line height is 'percentage' of the total container height
                 const activeIds: number[] = [];
                 cardRefs.current.forEach((card, index) => {
                     if (card) {
-                        // Get card's relative position within the container
                         const cardTop = card.offsetTop;
                         const cardHeight = card.offsetHeight;
-
-                        // Current line height in pixels
                         const currentLineHeightPx = (percentage / 100) * height;
-
-                        // If line height >= dot position (center of card)
                         if (currentLineHeightPx >= cardTop + (cardHeight / 2)) {
                             activeIds.push(index);
                         }
@@ -51,18 +42,14 @@ export function Experience() {
                 });
 
                 setActiveIndexes((prev) => {
-                    if (prev.length === activeIds.length && prev.every((id, i) => id === activeIds[i])) {
-                        return prev;
-                    }
+                    if (prev.length === activeIds.length && prev.every((id, i) => id === activeIds[i])) return prev;
                     return activeIds;
                 });
             }
         };
 
         window.addEventListener("scroll", handleScroll);
-        // Initial check
         handleScroll();
-
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
@@ -96,7 +83,7 @@ export function Experience() {
             company: "Chiang Mai University",
             role: "Computer Engineering (Cybersec Track)",
             period: "2021 - Present",
-            date: "June 2022- March 2026",
+            date: "June 2022 - March 2026",
             location: "Chiang Mai, Thailand",
             gpa: "GPA 3.29",
             logo: cmuLogo,
@@ -106,22 +93,29 @@ export function Experience() {
 
     return (
         <section id="experience" className="py-20 bg-slate-950 relative overflow-hidden">
-            {/* Background Gradients */}
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-500/10 rounded-full blur-[120px] pointer-events-none" />
 
             <div className="container px-4 md:px-6 relative z-10 mx-auto">
-                <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight">
+                {/* Section Header */}
+                <motion.div
+                    className="text-center mb-16"
+                    variants={fadeUpContainer}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={viewportOnce}
+                >
+                    <motion.p variants={fadeUpItem} className="text-sm font-semibold uppercase tracking-widest text-blue-400 mb-4">
+                        My Journey
+                    </motion.p>
+                    <motion.h2 variants={fadeUpItem} className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight">
                         Experience
-                    </h2>
-                </div>
+                    </motion.h2>
+                </motion.div>
 
                 <div className={`relative max-w-4xl mx-auto ${isMobile ? "pl-0" : "pl-8 md:pl-0"}`} ref={containerRef}>
-                    {/* Vertical Line Container - Hidden on mobile, using individual connectors instead */}
                     {!isMobile && (
                         <div className={`absolute top-0 h-full w-[2px] bg-slate-800/50 rounded-full overflow-hidden left-0 md:left-8`}>
-                            {/* Animated Scroll Progress Line */}
                             <div
                                 className="bg-blue-500 w-full origin-top transition-all duration-100 ease-linear"
                                 style={{ height: `${scrollHeight}%` }}
@@ -131,26 +125,23 @@ export function Experience() {
 
                     <div className="space-y-16">
                         {experiences.map((exp, index) => (
-                            <div
+                            <motion.div
                                 key={index}
                                 className={`relative group ${isMobile ? "pl-0" : "pl-8 md:pl-16"}`}
                                 ref={(el) => { cardRefs.current[index] = el }}
+                                initial={{ opacity: 0, y: 40 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, amount: 0.15 }}
+                                transition={{ duration: 0.7, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
                             >
-                                {/* Mobile Connector Line - connects bottom of this card to top of next card */}
                                 {isMobile && index < experiences.length - 1 && (
                                     <div
-                                        className={`
-                                            absolute left-1/2 -translate-x-1/2 w-[2px] bg-slate-800/50 rounded-full overflow-hidden
-                                            top-full h-16
-                                        `}
+                                        className="absolute left-1/2 -translate-x-1/2 w-[2px] bg-slate-800/50 rounded-full overflow-hidden top-full h-16"
                                         style={{ zIndex: 10 }}
                                     >
-                                        {/* Animated fill for mobile connector */}
                                         <div
                                             className="bg-blue-500 w-full origin-top transition-all duration-100 ease-linear"
-                                            style={{
-                                                height: activeIndexes.includes(index) ? '100%' : '0%'
-                                            }}
+                                            style={{ height: activeIndexes.includes(index) ? '100%' : '0%' }}
                                         />
                                     </div>
                                 )}
@@ -158,7 +149,7 @@ export function Experience() {
                                 {/* Timeline Dot */}
                                 <div
                                     className={`
-                                        absolute top-1/2 -translate-y-1/2 w-5 h-5 rounded-full border-4 border-slate-950 z-20 transition-all duration-500 
+                                        absolute top-1/2 -translate-y-1/2 w-5 h-5 rounded-full border-4 border-slate-950 z-20 transition-all duration-500
                                         ${isMobile ? "hidden" : "left-[-9px] md:left-[23px]"}
                                         ${activeIndexes.includes(index)
                                             ? "bg-blue-500 scale-125 shadow-[0_0_0_4px_rgba(59,130,246,0.2)]"
@@ -170,8 +161,8 @@ export function Experience() {
                                 {/* Content Card */}
                                 <div
                                     className={`
-                                        group relative overflow-hidden 
-                                        bg-white/[0.03] backdrop-blur-xl border border-white/10 
+                                        group relative overflow-hidden
+                                        bg-white/[0.03] backdrop-blur-xl border border-white/10
                                         p-8 rounded-3xl
                                         transition-all duration-500 ease-out
                                         hover:bg-white/[0.05] hover:scale-[1.01] hover:shadow-2xl hover:shadow-blue-500/10
@@ -181,11 +172,9 @@ export function Experience() {
                                         }
                                     `}
                                 >
-                                    {/* Inner Glow Effect */}
                                     <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                                     <div className="relative z-10">
-
                                         <div className={`flex flex-col md:flex-row md:items-start md:justify-between gap-4 ${exp.items.length > 0 ? "mb-4" : ""}`}>
                                             <div className="flex items-start gap-4">
                                                 <div className="w-24 h-24 bg-white/5 rounded-2xl flex items-center justify-center p-4 border border-white/10 group-hover:scale-110 transition-transform duration-500">
@@ -196,7 +185,6 @@ export function Experience() {
                                                         {exp.role}
                                                     </h3>
                                                     <div className="text-slate-300 font-medium mb-1">{exp.company}</div>
-
                                                     <div className="flex flex-wrap items-center gap-3 text-sm text-slate-500 mt-2">
                                                         <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/5">
                                                             <MapPin className="w-3.5 h-3.5" />
@@ -217,8 +205,6 @@ export function Experience() {
                                             </div>
                                         </div>
 
-
-
                                         {exp.items.length > 0 && (
                                             <ul className="space-y-4">
                                                 {exp.items.map((item, i) => (
@@ -233,7 +219,7 @@ export function Experience() {
                                         )}
                                     </div>
                                 </div>
-                            </div>
+                            </motion.div>
                         ))}
                     </div>
                 </div>

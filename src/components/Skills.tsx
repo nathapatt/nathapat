@@ -176,7 +176,7 @@ export function Skills() {
                                         <h3 className="text-xl font-semibold text-white/90 mb-1 group-hover:text-white transition-colors">
                                             {category.title}
                                         </h3>
-                                        <p className="text-slate-400 text-sm font-light leading-relaxed">
+                                        <p className="text-slate-300 text-sm font-light leading-relaxed">
                                             {category.description}
                                         </p>
                                     </div>
@@ -186,7 +186,7 @@ export function Skills() {
                                     {category.skills.map((skill, skillIndex) => (
                                         <div
                                             key={skillIndex}
-                                            className="flex items-center gap-2 px-3 py-2 bg-white/5 border border-white/5 rounded-xl text-slate-300 text-sm font-medium hover:bg-white/10 hover:text-white hover:border-white/20 transition-all duration-300 cursor-default"
+                                            className="flex items-center gap-2 px-3 py-2 bg-white/5 border border-white/5 rounded-xl text-slate-200 text-sm font-medium hover:bg-white/10 hover:text-white hover:border-white/20 transition-all duration-300 cursor-default"
                                         >
                                             <span className="text-lg opacity-80">{skill.icon}</span>
                                             <span>{skill.name}</span>

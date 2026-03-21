@@ -35,7 +35,7 @@ export function About() {
                         </motion.div>
 
                         {/* Bio Section */}
-                        <div className="space-y-6 text-slate-300 text-base leading-relaxed">
+                        <div className="space-y-6 text-slate-200 text-base leading-relaxed">
                             <motion.p variants={fadeUpItem}>
                                 I am a <span className="text-white font-bold">Computer Engineering student</span> at Chiang Mai University, graduating in 2026. My academic journey and participation in collaborative Software Engineering projects have built my strong foundation in teamwork and the modern development lifecycle.
                             </motion.p>
@@ -85,7 +85,7 @@ export function About() {
                                 <div className="space-y-4">
                                     <div>
                                         <h4 className="text-lg font-medium text-white mb-2">Top 50 : AIS JUMP Thailand Hackathon 2025</h4>
-                                        <p className="text-slate-300 text-base leading-relaxed">
+                                        <p className="text-slate-200 text-base leading-relaxed">
                                             Designed the solution architecture for <span className="text-slate-200 font-normal">'Pun Plook'</span>, an IoT-enabled smart pot aimed at improving accessibility for elderly users within the AIS ecosystem.
                                         </p>
                                     </div>
@@ -112,7 +112,7 @@ export function About() {
                                     ].map((cert, index) => (
                                         <li key={index} className="flex items-start gap-3 text-slate-300 text-base">
                                             <div className="w-1.5 h-1.5 rounded-full bg-blue-400/80 mt-2 shrink-0 group-hover:bg-blue-400 transition-colors" />
-                                            <span className="group-hover:text-white transition-colors">{cert}</span>
+                                            <span className="group-hover:text-white transition-colors text-slate-200">{cert}</span>
                                         </li>
                                     ))}
                                 </ul>

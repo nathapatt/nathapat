@@ -69,14 +69,14 @@ export function Hero() {
                 </motion.h1>
 
                 {/* University */}
-                <motion.div variants={fadeUpItem} className="flex flex-col items-center justify-center gap-2 text-lg md:text-2xl font-light text-slate-300">
+                <motion.div variants={fadeUpItem} className="flex flex-col items-center justify-center gap-2 text-lg md:text-2xl font-light text-slate-200">
                     <span className="text-center">Bachelor's of Computer Engineering at</span>
                     <span className="font-serif italic text-blue-400">Chiang Mai University</span>
                 </motion.div>
 
                 {/* Dynamic Role Text */}
                 <motion.div variants={fadeUpItem} className="h-8 flex items-center justify-center">
-                    <span className="text-slate-500 text-lg font-mono">{text}</span>
+                    <span className="text-slate-300 text-lg font-mono">{text}</span>
                     <span className="w-[2px] h-5 bg-blue-500 ml-2 animate-blink"></span>
                 </motion.div>
 

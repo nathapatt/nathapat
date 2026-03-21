@@ -184,9 +184,9 @@ export function Experience() {
                                                     <h3 className="text-xl font-bold text-white mb-1 group-hover:text-blue-400 transition-colors">
                                                         {exp.role}
                                                     </h3>
-                                                    <div className="text-slate-300 font-medium mb-1">{exp.company}</div>
+                                                    <div className="text-slate-200 font-medium mb-1">{exp.company}</div>
                                                     <div className="flex flex-wrap items-center gap-3 text-sm text-slate-500 mt-2">
-                                                        <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/5">
+                                                        <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/5 text-slate-300">
                                                             <MapPin className="w-3.5 h-3.5" />
                                                             {exp.location}
                                                         </span>
@@ -210,7 +210,7 @@ export function Experience() {
                                                 {exp.items.map((item, i) => (
                                                     <li key={i} className="flex items-start gap-3 group/item">
                                                         <div className="mt-2 w-1.5 h-1.5 rounded-full bg-blue-400/80 shrink-0 group-hover/item:bg-blue-400 transition-colors" />
-                                                        <span className="text-slate-300 text-base leading-relaxed group-hover/item:text-white transition-colors">
+                                                        <span className="text-slate-200 text-base leading-relaxed group-hover/item:text-white transition-colors">
                                                             {item}
                                                         </span>
                                                     </li>

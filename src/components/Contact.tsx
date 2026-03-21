@@ -28,7 +28,7 @@ export function Contact() {
                                 Get In Touch
                                 <span className="absolute left-0 -bottom-4 w-12 h-1 bg-white rounded-full"></span>
                             </h2>
-                            <p className="text-slate-300 text-lg mt-8 leading-relaxed">
+                            <p className="text-slate-200 text-lg mt-8 leading-relaxed">
                                 My inbox is always open for new opportunities or even just a friendly chat. Whether you have a question or a big idea, I'd love to hear from you!
                             </p>
                         </motion.div>
@@ -74,7 +74,7 @@ export function Contact() {
                         <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                         <div className="relative z-10">
                             <h3 className="text-2xl font-bold text-white mb-4">Let's collaborate</h3>
-                            <p className="text-slate-300 mb-8 leading-relaxed">
+                            <p className="text-slate-200 mb-8 leading-relaxed">
                                 Open to new opportunities and collaborations. Let's combine our strengths to create something great.
                             </p>
                             <a

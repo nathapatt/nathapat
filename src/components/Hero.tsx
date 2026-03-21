@@ -4,7 +4,7 @@ import { StarBackground } from "@/components/StarBackground"
 import { useState, useEffect } from "react"
 import mySelf from "@/assets/myself.jpg"
 import { motion } from "framer-motion"
-import { fadeUpContainer, fadeUpItem, scaleIn, viewportOnce } from "@/lib/animations"
+import { fadeUpContainer, fadeUpItem, scaleIn } from "@/lib/animations"
 
 export function Hero() {
     const [text, setText] = useState("");

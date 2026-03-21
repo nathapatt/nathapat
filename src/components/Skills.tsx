@@ -145,9 +145,6 @@ export function Skills() {
                     <motion.h2 variants={fadeUpItem} className="text-4xl md:text-5xl font-bold text-white mb-6 font-display tracking-tight">
                         Skills & Technologies
                     </motion.h2>
-                    <motion.p variants={fadeUpItem} className="text-slate-400 max-w-2xl mx-auto text-lg font-light">
-                        A curated stack of technologies I use to build digital products.
-                    </motion.p>
                 </motion.div>
 
                 {/* Skills Grid - cascades in view */}

@@ -86,9 +86,6 @@ export function Projects() {
                     <motion.h2 variants={fadeUpItem} className="text-3xl md:text-5xl font-bold text-white mb-6">
                         Featured Projects
                     </motion.h2>
-                    <motion.p variants={fadeUpItem} className="max-w-[600px] text-slate-400 text-lg">
-                        Selected Work — A collection of projects I've built.
-                    </motion.p>
                 </motion.div>
 
                 {/* Projects Grid */}

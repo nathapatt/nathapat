@@ -2,56 +2,177 @@ import { Calendar, MapPin } from "lucide-react"
 import { useResponsive } from "@/hooks/useResponsive"
 import witsawaLogo from "@/assets/witsawa.png"
 import cmuLogo from "@/assets/chiangmai_uni.svg"
-import { useEffect, useRef, useState } from "react"
-import { motion } from "framer-motion"
+import { useRef } from "react"
+import { motion, useScroll, useSpring, useTransform, useInView } from "framer-motion"
 import { fadeUpContainer, fadeUpItem, viewportOnce } from "@/lib/animations"
 
+function ExperienceCard({
+    exp,
+    index,
+    isLast,
+}: {
+    exp: {
+        company: string
+        role: string
+        period: string
+        date: string
+        location: string
+        gpa?: string
+        logo: string
+        items: React.ReactNode[]
+    }
+    index: number
+    isLast: boolean
+}) {
+    const ref = useRef<HTMLDivElement>(null)
+    const isInView = useInView(ref, { once: false, margin: "0px 0px -40% 0px" })
+
+    return (
+        <motion.div
+            ref={ref}
+            className="relative flex gap-6 md:gap-10"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.7, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
+        >
+            {/* Left column: line + logo node */}
+            <div className="hidden md:flex flex-col items-center flex-shrink-0" style={{ width: 96 }}>
+                {/* Logo as the timeline node */}
+                <motion.div
+                    className="relative z-20 w-24 h-24 rounded-2xl flex items-center justify-center p-4 border transition-all duration-500"
+                    animate={isInView ? {
+                        borderColor: "rgba(59,130,246,0.5)",
+                        backgroundColor: "rgb(4, 14, 36)",
+                        boxShadow: "0 0 0 4px rgba(59,130,246,0.1), 0 0 20px rgba(59,130,246,0.15)",
+                    } : {
+                        borderColor: "rgba(255,255,255,0.1)",
+                        backgroundColor: "rgb(2, 6, 23)",
+                        boxShadow: "none",
+                    }}
+                    transition={{ duration: 0.5 }}
+                >
+                    <img src={exp.logo} alt={exp.company} className="w-full h-full object-contain" />
+                    {/* Pulsing ring when active */}
+                    {isInView && (
+                        <motion.div
+                            className="absolute inset-0 rounded-2xl border border-blue-400/40"
+                            initial={{ scale: 1, opacity: 0.6 }}
+                            animate={{ scale: 1.3, opacity: 0 }}
+                            transition={{ duration: 1.2, repeat: Infinity, ease: "easeOut" }}
+                        />
+                    )}
+                </motion.div>
+
+                {/* Connecting line segment below this node — hidden for last card */}
+                {!isLast && (
+                    <div className="w-[2px] flex-1 mt-3 min-h-[2rem] relative overflow-visible">
+                        <div className="absolute inset-0 bg-slate-800/50 rounded-full" />
+                        <motion.div
+                            className="absolute inset-0 origin-top rounded-full"
+                            style={{
+                                background: isInView
+                                    ? "linear-gradient(to bottom, #3b82f6, #60a5fa88)"
+                                    : "transparent",
+                            }}
+                            animate={{ scaleY: isInView ? 1 : 0 }}
+                            transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                        />
+                    </div>
+                )}
+            </div>
+
+            {/* Right column: card content */}
+            <div className="flex-1 pb-12">
+                <div
+                    className={`
+                        group relative overflow-hidden
+                        bg-white/[0.03] backdrop-blur-xl
+                        p-6 md:p-8 rounded-3xl
+                        transition-all duration-500 ease-out
+                        hover:bg-white/[0.06] hover:scale-[1.01] hover:shadow-2xl hover:shadow-blue-500/10
+                        ${isInView ? "border border-white/20 shadow-lg shadow-blue-500/5" : "border border-white/10"}
+                    `}
+                >
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                    <div className="relative z-10">
+                        {/* Mobile: logo inline */}
+                        <div className="md:hidden flex items-center gap-3 mb-4">
+                            <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center p-2">
+                                <img src={exp.logo} alt={exp.company} className="w-full h-full object-contain" />
+                            </div>
+                            <div>
+                                <h3 className="text-lg font-bold text-white">{exp.role}</h3>
+                                <div className="text-slate-300 text-sm">{exp.company}</div>
+                            </div>
+                        </div>
+
+                        {/* Header row */}
+                        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-5">
+                            <div className="hidden md:block">
+                                <h3 className="text-xl font-bold text-white mb-1 group-hover:text-blue-400 transition-colors">
+                                    {exp.role}
+                                </h3>
+                                <div className="text-slate-200 font-medium">{exp.company}</div>
+                            </div>
+
+                            <div className="flex items-center gap-2 text-slate-300 text-sm font-medium bg-white/5 px-4 py-1.5 rounded-full border border-white/5 self-start shrink-0">
+                                <Calendar className="w-4 h-4" />
+                                {exp.date || exp.period}
+                            </div>
+                        </div>
+
+                        {/* Tags */}
+                        <div className="flex flex-wrap items-center gap-2 mb-5">
+                            <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/5 text-slate-300 text-sm">
+                                <MapPin className="w-3.5 h-3.5" />
+                                {exp.location}
+                            </span>
+                            {exp.gpa && (
+                                <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-semibold">
+                                    {exp.gpa}
+                                </span>
+                            )}
+                        </div>
+
+                        {/* Bullet items */}
+                        {exp.items.length > 0 && (
+                            <ul className="space-y-3">
+                                {exp.items.map((item, i) => (
+                                    <motion.li
+                                        key={i}
+                                        className="flex items-start gap-3 group/item"
+                                        initial={{ opacity: 0, x: -10 }}
+                                        whileInView={{ opacity: 1, x: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 0.4, delay: 0.2 + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                                    >
+                                        <div className="mt-2 w-1.5 h-1.5 rounded-full bg-blue-400/80 shrink-0 group-hover/item:bg-blue-400 transition-colors" />
+                                        <span className="text-slate-200 text-base leading-relaxed group-hover/item:text-white transition-colors">
+                                            {item}
+                                        </span>
+                                    </motion.li>
+                                ))}
+                            </ul>
+                        )}
+                    </div>
+                </div>
+            </div>
+        </motion.div>
+    )
+}
+
 export function Experience() {
-    const { isMobile } = useResponsive();
-    const containerRef = useRef<HTMLDivElement>(null);
-    const [scrollHeight, setScrollHeight] = useState(0);
-    const [activeIndexes, setActiveIndexes] = useState<number[]>([]);
-    const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+    const { isMobile } = useResponsive()
+    const containerRef = useRef<HTMLDivElement>(null)
 
-    useEffect(() => {
-        const handleScroll = () => {
-            if (containerRef.current) {
-                const { top, height } = containerRef.current.getBoundingClientRect();
-                const windowHeight = window.innerHeight;
-                const startThreshold = windowHeight * 0.5;
-                let percentage = 0;
-                if (top <= startThreshold) {
-                    const scrolledDistance = startThreshold - top;
-                    percentage = (scrolledDistance / height) * 100;
-                    percentage = Math.min(Math.max(percentage, 0), 100);
-                    setScrollHeight(percentage);
-                } else {
-                    setScrollHeight(0);
-                }
-
-                const activeIds: number[] = [];
-                cardRefs.current.forEach((card, index) => {
-                    if (card) {
-                        const cardTop = card.offsetTop;
-                        const cardHeight = card.offsetHeight;
-                        const currentLineHeightPx = (percentage / 100) * height;
-                        if (currentLineHeightPx >= cardTop + (cardHeight / 2)) {
-                            activeIds.push(index);
-                        }
-                    }
-                });
-
-                setActiveIndexes((prev) => {
-                    if (prev.length === activeIds.length && prev.every((id, i) => id === activeIds[i])) return prev;
-                    return activeIds;
-                });
-            }
-        };
-
-        window.addEventListener("scroll", handleScroll);
-        handleScroll();
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start 70%", "end 60%"],
+    })
+    const lineScaleY = useSpring(scrollYProgress, { stiffness: 80, damping: 20, restDelta: 0.001 })
+    const tipTop = useTransform(lineScaleY, [0, 1], ["0%", "100%"])
 
     const experiences = [
         {
@@ -89,7 +210,7 @@ export function Experience() {
             logo: cmuLogo,
             items: []
         }
-    ];
+    ]
 
     return (
         <section id="experience" className="py-20 bg-slate-950 relative overflow-hidden">
@@ -113,113 +234,37 @@ export function Experience() {
                     </motion.h2>
                 </motion.div>
 
-                <div className={`relative max-w-4xl mx-auto ${isMobile ? "pl-0" : "pl-8 md:pl-0"}`} ref={containerRef}>
+                {/* Timeline container */}
+                <div className="relative max-w-3xl mx-auto" ref={containerRef}>
+
+                    {/* Continuous background track — sits behind the logo column */}
                     {!isMobile && (
-                        <div className={`absolute top-0 h-full w-[2px] bg-slate-800/50 rounded-full overflow-hidden left-0 md:left-8`}>
-                            <div
-                                className="bg-blue-500 w-full origin-top transition-all duration-100 ease-linear"
-                                style={{ height: `${scrollHeight}%` }}
+                        <div
+                            className="absolute top-0 bottom-0 hidden md:block"
+                            style={{ left: 47, width: 2 }}
+                        >
+                            <div className="absolute inset-0 bg-slate-800/40 rounded-full" />
+                            <motion.div
+                                className="absolute top-0 left-0 right-0 rounded-full origin-top bg-gradient-to-b from-blue-500 via-blue-400 to-blue-500/30"
+                                style={{ scaleY: lineScaleY, height: "100%" }}
+                            />
+                            {/* Glowing tip */}
+                            <motion.div
+                                className="absolute left-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-blue-400 shadow-[0_0_10px_4px_rgba(96,165,250,0.5)]"
+                                style={{ top: tipTop }}
                             />
                         </div>
                     )}
 
-                    <div className="space-y-16">
+                    {/* Cards */}
+                    <div className="space-y-0">
                         {experiences.map((exp, index) => (
-                            <motion.div
+                            <ExperienceCard
                                 key={index}
-                                className={`relative group ${isMobile ? "pl-0" : "pl-8 md:pl-16"}`}
-                                ref={(el) => { cardRefs.current[index] = el }}
-                                initial={{ opacity: 0, y: 40 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, amount: 0.15 }}
-                                transition={{ duration: 0.7, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
-                            >
-                                {isMobile && index < experiences.length - 1 && (
-                                    <div
-                                        className="absolute left-1/2 -translate-x-1/2 w-[2px] bg-slate-800/50 rounded-full overflow-hidden top-full h-16"
-                                        style={{ zIndex: 10 }}
-                                    >
-                                        <div
-                                            className="bg-blue-500 w-full origin-top transition-all duration-100 ease-linear"
-                                            style={{ height: activeIndexes.includes(index) ? '100%' : '0%' }}
-                                        />
-                                    </div>
-                                )}
-
-                                {/* Timeline Dot */}
-                                <div
-                                    className={`
-                                        absolute top-1/2 -translate-y-1/2 w-5 h-5 rounded-full border-4 border-slate-950 z-20 transition-all duration-500
-                                        ${isMobile ? "hidden" : "left-[-9px] md:left-[23px]"}
-                                        ${activeIndexes.includes(index)
-                                            ? "bg-blue-500 scale-125 shadow-[0_0_0_4px_rgba(59,130,246,0.2)]"
-                                            : "bg-slate-700"
-                                        }
-                                    `}
-                                />
-
-                                {/* Content Card */}
-                                <div
-                                    className={`
-                                        group relative overflow-hidden
-                                        bg-white/[0.03] backdrop-blur-xl border border-white/10
-                                        p-8 rounded-3xl
-                                        transition-all duration-500 ease-out
-                                        hover:bg-white/[0.05] hover:scale-[1.01] hover:shadow-2xl hover:shadow-blue-500/10
-                                        ${activeIndexes.includes(index)
-                                            ? "border-white/20 shadow-lg shadow-blue-500/5"
-                                            : "border-white/10"
-                                        }
-                                    `}
-                                >
-                                    <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                                    <div className="relative z-10">
-                                        <div className={`flex flex-col md:flex-row md:items-start md:justify-between gap-4 ${exp.items.length > 0 ? "mb-4" : ""}`}>
-                                            <div className="flex items-start gap-4">
-                                                <div className="w-24 h-24 bg-white/5 rounded-2xl flex items-center justify-center p-4 border border-white/10 group-hover:scale-110 transition-transform duration-500">
-                                                    <img src={exp.logo} alt={exp.company} className="w-full h-full object-contain" />
-                                                </div>
-                                                <div>
-                                                    <h3 className="text-xl font-bold text-white mb-1 group-hover:text-blue-400 transition-colors">
-                                                        {exp.role}
-                                                    </h3>
-                                                    <div className="text-slate-200 font-medium mb-1">{exp.company}</div>
-                                                    <div className="flex flex-wrap items-center gap-3 text-sm text-slate-500 mt-2">
-                                                        <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/5 text-slate-300">
-                                                            <MapPin className="w-3.5 h-3.5" />
-                                                            {exp.location}
-                                                        </span>
-                                                        {exp.gpa && (
-                                                            <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400">
-                                                                <span className="font-semibold">{exp.gpa}</span>
-                                                            </span>
-                                                        )}
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div className="flex items-center gap-2 text-slate-300 text-sm font-medium bg-white/5 px-4 py-1.5 rounded-full border border-white/5 self-start shrink-0">
-                                                <Calendar className="w-4 h-4" />
-                                                {exp.date || exp.period}
-                                            </div>
-                                        </div>
-
-                                        {exp.items.length > 0 && (
-                                            <ul className="space-y-4">
-                                                {exp.items.map((item, i) => (
-                                                    <li key={i} className="flex items-start gap-3 group/item">
-                                                        <div className="mt-2 w-1.5 h-1.5 rounded-full bg-blue-400/80 shrink-0 group-hover/item:bg-blue-400 transition-colors" />
-                                                        <span className="text-slate-200 text-base leading-relaxed group-hover/item:text-white transition-colors">
-                                                            {item}
-                                                        </span>
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        )}
-                                    </div>
-                                </div>
-                            </motion.div>
+                                exp={exp}
+                                index={index}
+                                isLast={index === experiences.length - 1}
+                            />
                         ))}
                     </div>
                 </div>

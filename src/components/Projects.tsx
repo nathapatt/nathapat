@@ -32,7 +32,9 @@ const projects: Project[] = [
         description: "A RAG-powered ticket management system developed with ITSC Chiang Mai University as the stakeholder, featuring LLM-assisted analysis, dashboards, PDF export, and automated processing.",
         gradient: "from-pink-500 via-rose-500 to-red-500",
         image: ticketImage,
-        links: { demo: "#", code: "#" },
+        links: {
+            demo: "#", code: "https://github.com/nathapatt/web-management-log", code2: "https://github.com/apwjir/rag_itsc"
+        },
     },
     {
         id: "02",

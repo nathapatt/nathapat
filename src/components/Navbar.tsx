@@ -1,10 +1,12 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Github, Linkedin, Terminal, Menu, X, ChevronRight } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 
 export function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [activeSection, setActiveSection] = useState<string>("")
+    const isNavigating = useRef(false)
+    const navigationTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
     const navItems = ["About", "Projects", "Skills", "Experience", "Contact"]
 
@@ -27,7 +29,7 @@ export function Navbar() {
             if (!el) return
             const observer = new IntersectionObserver(
                 ([entry]) => {
-                    if (entry.isIntersecting) setActiveSection(item.toLowerCase())
+                    if (entry.isIntersecting && !isNavigating.current) setActiveSection(item.toLowerCase())
                 },
                 { threshold: 0.4 }
             )
@@ -41,7 +43,12 @@ export function Navbar() {
 
     const handleNavClick = (item: string) => {
         document.querySelector(`#${item.toLowerCase()}`)?.scrollIntoView({ behavior: "smooth" })
+        setActiveSection(item.toLowerCase())
         setIsMenuOpen(false)
+        // Lock observer updates during smooth scroll to prevent intermediate sections overriding the highlight
+        isNavigating.current = true
+        if (navigationTimer.current) clearTimeout(navigationTimer.current)
+        navigationTimer.current = setTimeout(() => { isNavigating.current = false }, 800)
     }
 
     return (

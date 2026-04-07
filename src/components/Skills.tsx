@@ -35,7 +35,8 @@ import {
     SiElasticsearch,
     SiMysql,
     SiRedis,
-    SiLangchain
+    SiLangchain,
+    SiAmazonec2
 } from "react-icons/si"
 import { FaJava } from "react-icons/fa"
 import { VscAzure } from "react-icons/vsc"
@@ -67,7 +68,8 @@ const skillCategories = [
             { name: "Google Cloud", icon: <SiGooglecloud className="text-[#4285F4]" /> },
             { name: "Azure", icon: <VscAzure className="text-[#0078D4]" /> },
             { name: "Docker", icon: <SiDocker className="text-[#2496ED]" /> },
-            { name: "Kubernetes", icon: <SiKubernetes className="text-[#326CE5]" /> }
+            { name: "Kubernetes", icon: <SiKubernetes className="text-[#326CE5]" /> },
+            { name: "AWS EC2", icon: <SiAmazonec2 className="text-[#FF9900]" /> }
         ]
     },
     {

@@ -34,7 +34,8 @@ import {
     SiPostgresql,
     SiElasticsearch,
     SiMysql,
-    SiRedis
+    SiRedis,
+    SiLangchain
 } from "react-icons/si"
 import { FaJava } from "react-icons/fa"
 import { VscAzure } from "react-icons/vsc"
@@ -97,7 +98,8 @@ const skillCategories = [
             { name: "Express", icon: <SiExpress className="text-white" /> },
             { name: "Tailwind CSS", icon: <SiTailwindcss className="text-[#06B6D4]" /> },
             { name: "Ant Design", icon: <SiAntdesign className="text-[#1890FF]" /> },
-            { name: "Shadcn UI", icon: <SiShadcnui className="text-white" /> }
+            { name: "Shadcn UI", icon: <SiShadcnui className="text-white" /> },
+            { name: "LangChain", icon: <SiLangchain className="text-[#1C3C3C]" /> }
         ]
     },
     {

@@ -46,7 +46,7 @@ export function About() {
                                 In an era where AI and Vibe Coding are rapidly transforming software development, I chose to specialize in the <span className="text-white font-bold">Cybersecurity track</span> to build a deep, structured foundation in digital security.
                             </motion.p>
                             <motion.p variants={fadeUpItem}>
-                                While I enjoy working across the stack, my core passion lies in <span className="text-white font-bold">Frontend Engineering</span>. I specialize in building pixel-perfect, responsive interfaces that provide seamless user experiences across all devices.
+                                I am deeply passionate about exploring <span className="text-white font-bold">New Tech Stacks</span> and continuously <span className="text-white font-bold">Expanding my Skill Set</span>. I thrive on adapting to <span className="text-white font-bold">Emerging Technologies</span> and am always ready to apply <span className="text-white font-bold">New Knowledge</span> to tackle diverse engineering challenges.
                             </motion.p>
                         </div>
 

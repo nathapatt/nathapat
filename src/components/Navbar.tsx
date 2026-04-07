@@ -18,7 +18,7 @@ export function Navbar() {
         if (heroEl) {
             const heroObserver = new IntersectionObserver(
                 ([entry]) => { if (entry.isIntersecting) setActiveSection("") },
-                { threshold: 0.4 }
+                { threshold: 0.1 }
             )
             heroObserver.observe(heroEl)
             observers.push(heroObserver)
@@ -31,7 +31,7 @@ export function Navbar() {
                 ([entry]) => {
                     if (entry.isIntersecting && !isNavigating.current) setActiveSection(item.toLowerCase())
                 },
-                { threshold: 0.4 }
+                { threshold: 0.1 }
             )
             observer.observe(el)
             observers.push(observer)

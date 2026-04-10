@@ -206,7 +206,7 @@ export function Experience() {
             period: "2021 - Present",
             date: "June 2022 - March 2026",
             location: "Chiang Mai, Thailand",
-            gpa: "GPA 3.29",
+            gpa: "GPA 3.36",
             logo: cmuLogo,
             items: []
         }

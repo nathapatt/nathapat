@@ -241,8 +241,14 @@ export function Projects() {
                             {isMobile && (
                                 <>
                                     {project.image && (
-                                        <div className="relative w-full flex justify-center items-end mt-4">
-                                            <motion.div className={`bg-slate-950 shadow-2xl rounded-lg overflow-hidden ${project.mobileImage ? 'w-[75%] mr-[-15%]' : 'w-[90%]'}`}>
+                                        <div className="relative w-full flex justify-center items-start mt-4 pt-2">
+                                            <motion.div
+                                                initial={{ opacity: 0, y: 36, scale: 0.94 }}
+                                                whileInView={{ opacity: 1, y: -4, scale: 1 }}
+                                                viewport={{ once: true, margin: "-40px" }}
+                                                transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                                                className={`bg-slate-950 shadow-2xl rounded-lg overflow-hidden -translate-y-1 ${project.mobileImage ? 'w-[75%] mr-[-15%]' : 'w-[90%]'}`}
+                                            >
                                                 <div className="h-5 bg-black flex items-center gap-1.5 px-3 border-b border-slate-700">
                                                     <div className="w-2 h-2 rounded-full bg-red-500" />
                                                     <div className="w-2 h-2 rounded-full bg-yellow-500" />
@@ -256,7 +262,7 @@ export function Projects() {
                                                     whileInView={{ opacity: 1, y: 0, scale: 1 }}
                                                     viewport={{ once: true, margin: "-40px" }}
                                                     transition={{ duration: 0.55, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-                                                    className="relative w-[30%] min-w-[5.25rem] max-w-[6.75rem] aspect-[9/19] bg-slate-950 rounded-[1rem] border-[3px] border-slate-900 shadow-2xl overflow-hidden ml-[-10%] z-10"
+                                                    className="relative -translate-y-2 w-[30%] min-w-[5.25rem] max-w-[6.75rem] aspect-[9/19] bg-slate-950 rounded-[1rem] border-[3px] border-slate-900 shadow-2xl overflow-hidden ml-[-10%] z-10"
                                                 >
                                                     <div className="absolute top-1 left-1/2 -translate-x-1/2 w-6 h-1.5 bg-black rounded-full z-20" />
                                                     <img src={project.mobileImage} alt={`${project.title} Mobile`} className="w-full h-full object-cover" />

@@ -31,6 +31,15 @@ interface Project {
 const projects: Project[] = [
     {
         id: "01",
+        category: "Backend Developer / AI Integration",
+        title: "Foonbot",
+        description: "A LINE-based air quality assistant for Thailand built with Spring Boot, LIFF, IQAir, scheduled notifications, AQI history tracking, and AI-generated health guidance.",
+        gradient: "from-sky-500 via-cyan-500 to-emerald-500",
+        mobileGallery: [foonbotHistoryImage, foonbotChatImage, foonbotLoadingImage],
+        links: { demo: "#", code: "https://github.com/nathapatt/foonbot" },
+    },
+    {
+        id: "02",
         category: "Full Stack Developer / DevOps",
         title: "Ticket Management App",
         description: "A RAG-powered ticket management system developed with ITSC Chiang Mai University as the stakeholder, featuring LLM-assisted analysis, dashboards, PDF export, and automated processing.",
@@ -41,7 +50,7 @@ const projects: Project[] = [
         },
     },
     {
-        id: "02",
+        id: "03",
         category: "Full Stack Developer",
         title: "Food Ordering System",
         description: "A session-based food ordering system with real-time table tracking, including a staff management site and a mobile web interface for customer orders.",
@@ -51,7 +60,7 @@ const projects: Project[] = [
         links: { demo: "#", code: "https://github.com/nathapatt/food-ordering-deploy" },
     },
     {
-        id: "03",
+        id: "04",
         category: "Frontend Developer",
         title: "Medical Examination System",
         description: "A comprehensive system for managing clinical examinations, patient records, and digital prescriptions.",
@@ -60,7 +69,7 @@ const projects: Project[] = [
         links: { demo: "#", code: "https://github.com/nathapatt/frontMex" },
     },
     {
-        id: "04",
+        id: "05",
         category: "Frontend Developer",
         title: "UPBEAT Game",
         description: "A multiplayer strategy game backend where players program their units using a custom scripting language.",
@@ -68,42 +77,46 @@ const projects: Project[] = [
         image: upbeatImage,
         links: { demo: "#", code: "https://github.com/NokiaTh131/upbeat", code2: "https://github.com/NokiaTh131/newUPBEAT" },
     },
-    {
-        id: "05",
-        category: "Backend Developer / AI Integration",
-        title: "Foonbot",
-        description: "A LINE-based air quality assistant for Thailand built with Spring Boot, LIFF, IQAir, scheduled notifications, AQI history tracking, and AI-generated health guidance.",
-        gradient: "from-sky-500 via-cyan-500 to-emerald-500",
-        mobileGallery: [foonbotLoadingImage, foonbotChatImage, foonbotHistoryImage],
-        links: { demo: "#", code: "https://github.com/nathapatt/foonbot" },
-    },
 ];
 
 export function Projects() {
     const { isMobile, isTablet } = useResponsive();
     const desktopGalleryClasses = [
-        "h-[48%] translate-x-10 translate-y-8 rotate-[-10deg] z-10",
-        "h-[66%] z-20",
-        "h-[48%] -translate-x-10 translate-y-8 rotate-[10deg] z-10",
+        "h-[36%] translate-x-10 translate-y-28 rotate-[-10deg] z-10",
+        "h-[52%] translate-y-24 z-20",
+        "h-[36%] -translate-x-10 translate-y-28 rotate-[10deg] z-10",
     ];
     const desktopGalleryHoverClasses = [
-        "group-hover:translate-x-7 group-hover:translate-y-3 group-hover:rotate-[-14deg] group-focus-within:translate-x-7 group-focus-within:translate-y-3 group-focus-within:rotate-[-14deg]",
-        "group-hover:-translate-y-4 group-hover:scale-[1.03] group-focus-within:-translate-y-4 group-focus-within:scale-[1.03]",
-        "group-hover:-translate-x-7 group-hover:translate-y-3 group-hover:rotate-[14deg] group-focus-within:-translate-x-7 group-focus-within:translate-y-3 group-focus-within:rotate-[14deg]",
+        "group-hover:translate-x-7 group-hover:translate-y-24 group-hover:rotate-[-14deg] group-focus-within:translate-x-7 group-focus-within:translate-y-24 group-focus-within:rotate-[-14deg]",
+        "group-hover:translate-y-20 group-hover:scale-[1.03] group-focus-within:translate-y-20 group-focus-within:scale-[1.03]",
+        "group-hover:-translate-x-7 group-hover:translate-y-24 group-hover:rotate-[14deg] group-focus-within:-translate-x-7 group-focus-within:translate-y-24 group-focus-within:rotate-[14deg]",
     ];
     const mobileGalleryClasses = [
-        "w-[30%] translate-x-6 translate-y-6 rotate-[-8deg] z-10",
-        "w-[38%] z-20",
-        "w-[30%] -translate-x-6 translate-y-6 rotate-[8deg] z-10",
+        "w-[28%] min-w-[5.5rem] max-w-[6.5rem] translate-x-5 translate-y-2 rotate-[-8deg] z-10",
+        "w-[36%] min-w-[6.75rem] max-w-[8rem] -translate-y-2 z-20",
+        "w-[28%] min-w-[5.5rem] max-w-[6.5rem] -translate-x-5 translate-y-2 rotate-[8deg] z-10",
     ];
 
-    const renderPhoneFrame = (imageSrc: string, alt: string, className: string, hoverClassName = "") => (
+    const renderPhoneFrame = (
+        imageSrc: string,
+        alt: string,
+        className: string,
+        hoverClassName = "",
+        entranceDelay = 0
+    ) => (
         <motion.div
             key={`${alt}-${className}`}
-            className={`relative w-auto aspect-[9/19.5] bg-slate-950 rounded-[1.5rem] md:rounded-[2rem] border-[4px] md:border-[6px] border-slate-900 shadow-2xl overflow-hidden transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform ${className} ${hoverClassName}`}
+            initial={{ opacity: 0, y: 36, scale: 0.92 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.55, delay: entranceDelay, ease: [0.22, 1, 0.36, 1] }}
         >
-            <div className="absolute top-2 left-1/2 -translate-x-1/2 w-8 md:w-12 h-2 md:h-3 bg-black rounded-full z-20" />
-            <img src={imageSrc} alt={alt} className="w-full h-full object-cover" />
+            <div
+                className={`relative w-auto aspect-[9/19.5] bg-slate-950 rounded-[1.15rem] md:rounded-[2rem] border-[3px] md:border-[6px] border-slate-900 shadow-2xl overflow-hidden transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform ${className} ${hoverClassName}`}
+            >
+                <div className="absolute top-1.5 left-1/2 -translate-x-1/2 w-7 md:w-12 h-1.5 md:h-3 bg-black rounded-full z-20" />
+                <img src={imageSrc} alt={alt} className="w-full h-full object-cover" />
+            </div>
         </motion.div>
     );
 
@@ -204,6 +217,7 @@ export function Projects() {
                                                         `${project.title} screen ${imageIndex + 1}`,
                                                         desktopGalleryClasses[imageIndex] ?? "h-[56%] z-10",
                                                         desktopGalleryHoverClasses[imageIndex] ?? "",
+                                                        imageIndex * 0.08,
                                                     )
                                                 )}
                                             </div>
@@ -237,7 +251,13 @@ export function Projects() {
                                                 <img src={project.image} alt={project.title} className="w-full h-auto object-cover" />
                                             </motion.div>
                                             {project.mobileImage && (
-                                                <motion.div className="relative w-[30%] aspect-[9/19] bg-slate-950 rounded-[1rem] border-[3px] border-slate-900 shadow-2xl overflow-hidden ml-[-10%] z-10">
+                                                <motion.div
+                                                    initial={{ opacity: 0, y: 32, scale: 0.92 }}
+                                                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                                                    viewport={{ once: true, margin: "-40px" }}
+                                                    transition={{ duration: 0.55, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+                                                    className="relative w-[30%] min-w-[5.25rem] max-w-[6.75rem] aspect-[9/19] bg-slate-950 rounded-[1rem] border-[3px] border-slate-900 shadow-2xl overflow-hidden ml-[-10%] z-10"
+                                                >
                                                     <div className="absolute top-1 left-1/2 -translate-x-1/2 w-6 h-1.5 bg-black rounded-full z-20" />
                                                     <img src={project.mobileImage} alt={`${project.title} Mobile`} className="w-full h-full object-cover" />
                                                 </motion.div>
@@ -245,12 +265,14 @@ export function Projects() {
                                         </div>
                                     )}
                                     {project.mobileGallery?.length && (
-                                        <div className="relative flex justify-center items-end mt-4 min-h-[22rem] px-2 overflow-hidden">
+                                        <div className="relative flex justify-center items-start mt-4 min-h-[20rem] px-2 pt-2 overflow-hidden">
                                             {project.mobileGallery.map((imageSrc, imageIndex) =>
                                                 renderPhoneFrame(
                                                     imageSrc,
                                                     `${project.title} screen ${imageIndex + 1}`,
                                                     mobileGalleryClasses[imageIndex] ?? "w-[34%] z-10",
+                                                    "",
+                                                    imageIndex * 0.08,
                                                 )
                                             )}
                                         </div>

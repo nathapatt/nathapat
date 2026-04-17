@@ -6,6 +6,9 @@ import orderImage from "../assets/order.png"
 import orderClientImage from "../assets/order_client.png"
 import ticketImage from "../assets/ticket.png"
 import upbeatImage from "../assets/upbeat.png"
+import foonbotHistoryImage from "../assets/foonbot-history.png"
+import foonbotLoadingImage from "../assets/foonbot-loading.png"
+import foonbotChatImage from "../assets/foonbot-chat.jpg"
 import { fadeUpContainer, fadeUpItem, viewportOnce } from "@/lib/animations"
 
 interface Project {
@@ -16,6 +19,7 @@ interface Project {
     gradient: string;
     image?: string;
     mobileImage?: string;
+    mobileGallery?: string[];
     links: {
         demo: string;
         code: string;
@@ -64,10 +68,44 @@ const projects: Project[] = [
         image: upbeatImage,
         links: { demo: "#", code: "https://github.com/NokiaTh131/upbeat", code2: "https://github.com/NokiaTh131/newUPBEAT" },
     },
+    {
+        id: "05",
+        category: "Backend Developer / AI Integration",
+        title: "Foonbot",
+        description: "A LINE-based air quality assistant for Thailand built with Spring Boot, LIFF, IQAir, scheduled notifications, AQI history tracking, and AI-generated health guidance.",
+        gradient: "from-sky-500 via-cyan-500 to-emerald-500",
+        mobileGallery: [foonbotLoadingImage, foonbotChatImage, foonbotHistoryImage],
+        links: { demo: "#", code: "https://github.com/nathapatt/foonbot" },
+    },
 ];
 
 export function Projects() {
     const { isMobile, isTablet } = useResponsive();
+    const desktopGalleryClasses = [
+        "h-[48%] translate-x-10 translate-y-8 rotate-[-10deg] z-10",
+        "h-[66%] z-20",
+        "h-[48%] -translate-x-10 translate-y-8 rotate-[10deg] z-10",
+    ];
+    const desktopGalleryHoverClasses = [
+        "group-hover:translate-x-7 group-hover:translate-y-3 group-hover:rotate-[-14deg] group-focus-within:translate-x-7 group-focus-within:translate-y-3 group-focus-within:rotate-[-14deg]",
+        "group-hover:-translate-y-4 group-hover:scale-[1.03] group-focus-within:-translate-y-4 group-focus-within:scale-[1.03]",
+        "group-hover:-translate-x-7 group-hover:translate-y-3 group-hover:rotate-[14deg] group-focus-within:-translate-x-7 group-focus-within:translate-y-3 group-focus-within:rotate-[14deg]",
+    ];
+    const mobileGalleryClasses = [
+        "w-[30%] translate-x-6 translate-y-6 rotate-[-8deg] z-10",
+        "w-[38%] z-20",
+        "w-[30%] -translate-x-6 translate-y-6 rotate-[8deg] z-10",
+    ];
+
+    const renderPhoneFrame = (imageSrc: string, alt: string, className: string, hoverClassName = "") => (
+        <motion.div
+            key={`${alt}-${className}`}
+            className={`relative w-auto aspect-[9/19.5] bg-slate-950 rounded-[1.5rem] md:rounded-[2rem] border-[4px] md:border-[6px] border-slate-900 shadow-2xl overflow-hidden transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform ${className} ${hoverClassName}`}
+        >
+            <div className="absolute top-2 left-1/2 -translate-x-1/2 w-8 md:w-12 h-2 md:h-3 bg-black rounded-full z-20" />
+            <img src={imageSrc} alt={alt} className="w-full h-full object-cover" />
+        </motion.div>
+    );
 
     return (
         <section id="projects" className="py-24 md:py-32 bg-[#020617] relative overflow-hidden">
@@ -158,13 +196,24 @@ export function Projects() {
                                                 <img src={project.image} alt={project.title} className="w-full h-auto object-cover" />
                                             </motion.div>
                                         )}
-                                        {project.mobileImage && (
+                                        {project.mobileGallery?.length ? (
+                                            <div className="absolute inset-x-0 bottom-0 z-20 flex items-end justify-center px-6">
+                                                {project.mobileGallery.map((imageSrc, imageIndex) =>
+                                                    renderPhoneFrame(
+                                                        imageSrc,
+                                                        `${project.title} screen ${imageIndex + 1}`,
+                                                        desktopGalleryClasses[imageIndex] ?? "h-[56%] z-10",
+                                                        desktopGalleryHoverClasses[imageIndex] ?? "",
+                                                    )
+                                                )}
+                                            </div>
+                                        ) : project.mobileImage && (
                                             <motion.div className="absolute bottom-0 right-4 md:right-8 h-[60%] w-auto aspect-[9/19] bg-slate-950 rounded-[1.5rem] md:rounded-[2rem] border-[4px] md:border-[6px] border-slate-900 shadow-2xl transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-4 origin-bottom z-20 overflow-hidden">
                                                 <div className="absolute top-2 left-1/2 -translate-x-1/2 w-8 md:w-12 h-2 md:h-3 bg-black rounded-full z-20" />
                                                 <img src={project.mobileImage} alt={`${project.title} Mobile`} className="w-full h-full object-cover" />
                                             </motion.div>
                                         )}
-                                        {!project.image && !project.mobileImage && (
+                                        {!project.image && !project.mobileImage && !project.mobileGallery?.length && (
                                             <>
                                                 <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-white/10 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700 ease-in-out" />
                                                 <div className="absolute -top-20 -left-20 w-48 h-48 bg-black/10 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700 ease-in-out" />
@@ -175,23 +224,38 @@ export function Projects() {
                             </div>
 
                             {/* Mobile: Device Frames */}
-                            {isMobile && project.image && (
-                                <div className="relative w-full flex justify-center items-end mt-4">
-                                    <motion.div className={`bg-slate-950 shadow-2xl rounded-lg overflow-hidden ${project.mobileImage ? 'w-[75%] mr-[-15%]' : 'w-[90%]'}`}>
-                                        <div className="h-5 bg-black flex items-center gap-1.5 px-3 border-b border-slate-700">
-                                            <div className="w-2 h-2 rounded-full bg-red-500" />
-                                            <div className="w-2 h-2 rounded-full bg-yellow-500" />
-                                            <div className="w-2 h-2 rounded-full bg-green-500" />
+                            {isMobile && (
+                                <>
+                                    {project.image && (
+                                        <div className="relative w-full flex justify-center items-end mt-4">
+                                            <motion.div className={`bg-slate-950 shadow-2xl rounded-lg overflow-hidden ${project.mobileImage ? 'w-[75%] mr-[-15%]' : 'w-[90%]'}`}>
+                                                <div className="h-5 bg-black flex items-center gap-1.5 px-3 border-b border-slate-700">
+                                                    <div className="w-2 h-2 rounded-full bg-red-500" />
+                                                    <div className="w-2 h-2 rounded-full bg-yellow-500" />
+                                                    <div className="w-2 h-2 rounded-full bg-green-500" />
+                                                </div>
+                                                <img src={project.image} alt={project.title} className="w-full h-auto object-cover" />
+                                            </motion.div>
+                                            {project.mobileImage && (
+                                                <motion.div className="relative w-[30%] aspect-[9/19] bg-slate-950 rounded-[1rem] border-[3px] border-slate-900 shadow-2xl overflow-hidden ml-[-10%] z-10">
+                                                    <div className="absolute top-1 left-1/2 -translate-x-1/2 w-6 h-1.5 bg-black rounded-full z-20" />
+                                                    <img src={project.mobileImage} alt={`${project.title} Mobile`} className="w-full h-full object-cover" />
+                                                </motion.div>
+                                            )}
                                         </div>
-                                        <img src={project.image} alt={project.title} className="w-full h-auto object-cover" />
-                                    </motion.div>
-                                    {project.mobileImage && (
-                                        <motion.div className="relative w-[30%] aspect-[9/19] bg-slate-950 rounded-[1rem] border-[3px] border-slate-900 shadow-2xl overflow-hidden ml-[-10%] z-10">
-                                            <div className="absolute top-1 left-1/2 -translate-x-1/2 w-6 h-1.5 bg-black rounded-full z-20" />
-                                            <img src={project.mobileImage} alt={`${project.title} Mobile`} className="w-full h-full object-cover" />
-                                        </motion.div>
                                     )}
-                                </div>
+                                    {project.mobileGallery?.length && (
+                                        <div className="relative flex justify-center items-end mt-4 min-h-[22rem] px-2 overflow-hidden">
+                                            {project.mobileGallery.map((imageSrc, imageIndex) =>
+                                                renderPhoneFrame(
+                                                    imageSrc,
+                                                    `${project.title} screen ${imageIndex + 1}`,
+                                                    mobileGalleryClasses[imageIndex] ?? "w-[34%] z-10",
+                                                )
+                                            )}
+                                        </div>
+                                    )}
+                                </>
                             )}
                         </motion.div>
                     ))}
